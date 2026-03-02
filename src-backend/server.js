@@ -17,31 +17,9 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Accepted origins: always localhost, any *.vercel.app preview URL,
-// plus whatever FRONTEND_URL is set to on Render (supports comma-separated list).
-const extraOrigins = (process.env.FRONTEND_URL || '')
-    .split(',')
-    .map(o => o.trim())
-    .filter(Boolean);
+// Allow all origins — simplest approach for a personal deployment
+app.use(cors());
 
-const allowedOrigins = [
-    'http://localhost:3000',
-    'http://localhost:5173',
-    ...extraOrigins,
-];
-
-app.use(cors({
-    origin: (origin, callback) => {
-        // Allow server-to-server calls (no origin header)
-        if (!origin) return callback(null, true);
-        // Allow any Vercel deployment/preview URL
-        if (origin.endsWith('.vercel.app')) return callback(null, true);
-        // Allow explicitly listed origins
-        if (allowedOrigins.includes(origin)) return callback(null, true);
-        callback(new Error(`CORS: origin ${origin} not allowed`));
-    },
-    credentials: true,
-}));
 
 app.use(express.json({ limit: '50mb' }));
 
