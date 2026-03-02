@@ -1,0 +1,698 @@
+/* PropertiesPanel.css */
+
+.properties-panel {
+  position: fixed;
+  right: 16px;
+  top: 80px;
+  width: 340px;
+  /* Fixed width */
+
+  /* Black & Yellow Theme */
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  /* Yellow border */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0;
+  transform: translateX(20px);
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.properties-panel.open {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+
+/* Header */
+.properties-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.properties-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFD700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  color: #FFD700;
+}
+
+/* Content */
+.properties-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Scrollbar */
+.properties-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.properties-content::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+/* --- SECTION LAYOUT FIX --- */
+.property-section {
+  display: block;
+  /* Changed from flex to block to prevent shrinking */
+  width: 100%;
+  /* Force full width */
+  margin-bottom: 12px;
+}
+
+.property-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: #bbb;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  /* Space between label and slider */
+}
+
+/* --- SLIDER FIXES --- */
+.slider-container {
+  display: block;
+  width: 100%;
+  /* Force container to fill parent */
+  position: relative;
+  padding: 0 2px;
+  /* Tiny buffer to prevent thumb clipping */
+  box-sizing: border-box;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  /* Force input to fill container */
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  /* Handled via inline style */
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border: 2px solid #FFD700;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-top: -6px;
+  transition: transform 0.1s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #FFD700;
+  border-color: #fff;
+}
+
+/* Marks */
+.slider-marks-container {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  margin-top: 8px;
+}
+
+.slider-mark {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+  width: 20px;
+  /* Give it width so it centers correctly */
+}
+
+.slider-mark::before {
+  content: '';
+  width: 1px;
+  height: 5px;
+  background: #444;
+  margin-bottom: 4px;
+}
+
+.slider-mark span {
+  font-size: 10px;
+  color: #666;
+  font-family: monospace;
+}
+
+/* Value Box */
+.property-value-box {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #FFD700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: monospace;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* Tabs */
+.tabs-container {
+  display: flex;
+  background: #111;
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  gap: 4px;
+}
+
+.tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #666;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 6px;
+}
+
+.tab-btn.active {
+  background: #FFD700;
+  color: #000;
+}
+
+.divider {
+  height: 1px;
+  background: #222;
+  margin: 10px 0;
+}
+
+.mute-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: #ddd;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.mute-row input {
+  accent-color: #FFD700;
+  width: 16px;
+  height: 16px;
+}
+
+/* Text Inputs */
+.modern-input {
+  width: 100%;
+  background: #111;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+
+/* modern-input {
+width: 100%;
+background: #202020 !important;
+color: #fff;
+border: 1px solid #333;
+padding: 12px;
+border-radius: 6px;
+font-size: 13px;
+box-sizing: border-box;
+padding: 10px !important;
+} */
+
+.modern-input:focus {
+  border-color: #FFD700;
+  outline: none;
+}
+
+/* Masks */
+.mask-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.mask-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #888;
+  cursor: pointer;
+}
+
+.mask-item.selected {
+  border-color: #FFD700;
+  color: #fff;
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.mask-item.selected .material-icons {
+  color: #FFD700;
+}
+
+
+/* --- PASTE THIS AT THE END OF PropertiesPanel.css --- */
+
+/* Force the slider container to ignore parent padding */
+.properties-content .slider-container {
+  display: block;
+  width: calc(100% + 48px) !important;
+  /* Add back the 24px+24px padding */
+  margin-left: -24px !important;
+  /* Pull left */
+  margin-right: -24px !important;
+  /* Pull right */
+  padding: 0 20px;
+  /* Safe zone so the round thumb isn't cut off */
+  box-sizing: border-box;
+}
+
+/* Fix the alignment of the 0/50/100 text marks */
+.slider-marks-container {
+  width: 100%;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+/* --- PASTE AT THE END OF PropertiesPanel.css --- */
+
+/* 1. Ensure the section is definitely a vertical block (prevents side-by-side squashing) */
+.property-section {
+  display: block !important;
+  width: 100% !important;
+}
+
+/* 2. Break the slider out of the parent's 24px padding */
+.slider-container {
+  display: block !important;
+  position: relative;
+
+  /* Calculate width: 100% of space + the 48px lost to padding */
+  width: calc(100% + 48px) !important;
+
+  /* Pull the container left and right to touch the edges */
+  margin-left: -24px !important;
+  margin-right: -24px !important;
+
+  /* Add internal padding so the circle thumb doesn't get cut off at the edges */
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+}
+
+/* 3. Ensure the input itself fills that new wide container */
+input[type="range"] {
+  width: 100% !important;
+  display: block !important;
+  margin: 0 !important;
+}
+
+/* 4. Re-align the text marks (0, 50, 100) to match the new width */
+.slider-marks-container {
+  width: 100% !important;
+  padding: 0 5px !important;
+  box-sizing: border-box !important;
+}
+
+
+
+
+/* =========================================
+   AUDIO SECTION ADDITIONS
+   (Paste at the bottom of PropertiesPanel.css)
+   ========================================= */
+
+/* 1. Spacing for the new groups */
+.property-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+/* 2. Labels for Volume/Fade */
+.property-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 3. Custom Slider Styling (Volume, Fade In/Out) */
+.property-slider {
+  -webkit-appearance: none;
+  /* Remove default browser styling */
+  width: 100%;
+  height: 4px;
+  background: #333;
+  /* Dark track */
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  margin: 10px 0;
+  /* Spacing from label */
+}
+
+/* Slider Handle (The Circle) */
+.property-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #D1FE17;
+  /* Neon Lime to match Editor */
+  border: 2px solid #111;
+  /* Dark border for contrast */
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(209, 254, 23, 0.4);
+  /* Glow effect */
+  transition: transform 0.1s ease;
+  margin-top: -5px;
+  /* Centers the thumb on the track */
+}
+
+.property-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Firefox Support */
+.property-slider::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  background: #333;
+  border-radius: 2px;
+}
+
+.property-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #D1FE17;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* --- Mini Labels for Advanced Controls (Shadow/Glow) --- */
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  /* Spacing between rows */
+  width: 100%;
+}
+
+.mini-label {
+  font-size: 10px;
+  color: #888;
+  /* Muted gray text */
+  width: 40px;
+  /* Fixed width ensures sliders align vertically */
+  font-weight: 600;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  /* Prevents label from squishing */
+}
+
+/* Optional: Enhances the small color picker if used next to these */
+.color-picker-small {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+
+/* --- Cool Font Dropdown Styling --- */
+
+.modern-select {
+  width: 100%;
+  padding: 10px 12px;
+  padding-right: 30px;
+  /* Space for custom arrow */
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+
+  /* Hides default browser arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Custom Neon Arrow SVG */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23D1FE17%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  background-size: 10px auto;
+
+  transition: all 0.2s ease;
+}
+
+/* Hover State */
+.modern-select:hover {
+  border-color: #555;
+  background-color: #1a1a1a;
+}
+
+/* Focus State (Neon Glow) */
+.modern-select:focus {
+  border-color: #D1FE17;
+  /* Your neon color */
+  box-shadow: 0 0 8px rgba(209, 254, 23, 0.15);
+}
+
+/* Styling the dropdown list options (Works in most modern browsers) */
+.modern-select option {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* --- Custom Attractive Dropdown --- */
+
+.custom-dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+.custom-dropdown-trigger {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.custom-dropdown-trigger:hover {
+  background-color: #1a1a1a;
+  border-color: #555;
+}
+
+.custom-dropdown-trigger.open {
+  border-color: #D1FE17;
+  box-shadow: 0 0 8px rgba(209, 254, 23, 0.15);
+}
+
+/* The Portal Dropdown List */
+.custom-dropdown-list {
+  /* Position is handled inline by JS (fixed) */
+  background-color: #1a1a1a;
+  border: 1px solid #D1FE17;
+  border-radius: 8px;
+  box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.6);
+  z-index: 99999;
+  /* Very High Z-Index */
+
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+
+  /* Animation: Fly in from right to left */
+  animation: flyInLeft 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes flyInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(20px) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.custom-dropdown-option {
+  padding: 10px 12px;
+  font-size: 16px;
+  color: #ddd;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.1s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.custom-dropdown-option:hover {
+  background-color: rgba(209, 254, 23, 0.1);
+  color: #D1FE17;
+  padding-left: 16px;
+}
+
+.custom-dropdown-option.selected {
+  background-color: #D1FE17;
+  color: #000;
+  font-weight: bold;
+}
+
+.dropdown-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99998;
+  /* Just below the dropdown */
+  cursor: default;
+}
+
+
+/* =========================================
+   MISSING LAYOUT CLASSES FIX
+   ========================================= */
+
+/* Horizontal row for toggles (e.g., Background Box) */
+.property-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.property-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* Two-column layout for Spacing & Line Height */
+.property-row-dual {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.half-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* Prevents input fields from blowing out the container */
+  gap: 6px;
+}
+
+/* Base Color Picker styling */
+.color-picker {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Indented sub-controls (used for Shadow sliders) */
+.sub-controls {
+  padding-left: 10px;
+  border-left: 2px solid #333;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

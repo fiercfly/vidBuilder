@@ -1,0 +1,107 @@
+[
+  {
+    "id": "el_emoji_fire",
+    "name": "Fire",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f525.svg",
+    "type": "image",
+    "category": "Reactions"
+  },
+  {
+    "id": "el_emoji_laugh",
+    "name": "Laugh",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f602.svg",
+    "type": "image",
+    "category": "Reactions"
+  },
+  {
+    "id": "el_emoji_cool",
+    "name": "Cool",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f60e.svg",
+    "type": "image",
+    "category": "Reactions"
+  },
+  {
+    "id": "el_emoji_heart",
+    "name": "Heart",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2764.svg",
+    "type": "image",
+    "category": "Reactions"
+  },
+  {
+    "id": "el_emoji_thumbsup",
+    "name": "Thumbs Up",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f44d.svg",
+    "type": "image",
+    "category": "Reactions"
+  },
+  {
+    "id": "el_emoji_party",
+    "name": "Party",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f389.svg",
+    "type": "image",
+    "category": "Objects"
+  },
+  {
+    "id": "el_emoji_rocket",
+    "name": "Rocket",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f680.svg",
+    "type": "image",
+    "category": "Objects"
+  },
+  {
+    "id": "el_emoji_star",
+    "name": "Star",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2b50.svg",
+    "type": "image",
+    "category": "Objects"
+  },
+  {
+    "id": "el_emoji_money",
+    "name": "Money",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f4b8.svg",
+    "type": "image",
+    "category": "Objects"
+  },
+  {
+    "id": "el_emoji_idea",
+    "name": "Idea",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f4a1.svg",
+    "type": "image",
+    "category": "Objects"
+  },
+  {
+    "id": "el_emoji_pizza",
+    "name": "Pizza",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f355.svg",
+    "type": "image",
+    "category": "Food"
+  },
+  {
+    "id": "el_emoji_coffee",
+    "name": "Coffee",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2615.svg",
+    "type": "image",
+    "category": "Food"
+  },
+  {
+    "id": "el_emoji_alien",
+    "name": "Alien",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f47d.svg",
+    "type": "image",
+    "category": "Misc"
+  },
+  {
+    "id": "el_emoji_ghost",
+    "name": "Ghost",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f47b.svg",
+    "type": "image",
+    "category": "Misc"
+  },
+  {
+    "id": "el_emoji_sparkles",
+    "name": "Sparkles",
+    "fileName": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2728.svg",
+    "type": "image",
+    "category": "Misc"
+  }
+]

@@ -1,0 +1,5959 @@
+.video-editor-container0,
+.video-editor-container0 *,
+.video-editor-container,
+.video-editor-container * {
+  box-sizing: border-box;
+}
+
+.video-editor-container0 {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: #05050f !important;
+  min-height: 100dvh !important;
+}
+
+.video-editor-container {
+  width: 100%;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  background: #05050f;
+  color: #f8fafc;
+  overflow: hidden !important;
+  height: auto !important;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.preview-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.canvas-frame {
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-container {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#navheaderhead {
+  height: 56px;
+  background: transparent;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 12px;
+}
+
+.top-strip {
+  flex: 0 0 60px !important;
+  height: 60px;
+  min-height: 60px !important;
+  max-height: 60px !important;
+  width: 100% !important;
+  background: rgba(5, 5, 20, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.12);
+  grid-column: 1 / -1;
+  box-shadow: 0 1px 0 rgba(251, 191, 36, 0.08), 0 4px 24px rgba(0, 0, 0, 0.6);
+  z-index: 40;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.company-logo {
+  height: 36px;
+  display: block;
+  border-radius: 6px;
+  padding: 2px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.06));
+}
+
+.center-section {
+  display: flex;
+  align-items: center;
+}
+
+.aspect-ratio-controls {
+  position: relative;
+}
+
+.ratio-dropdown {
+  position: relative;
+}
+
+.ratio-dropdown-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.ratio-dropdown-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.ratio-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  background: #2d2d2d;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 200px;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: dropdownFadeIn 0.2s ease forwards;
+}
+
+@keyframes dropdownFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ratio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.ratio-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.ratio-option.active {
+  color: #2196f3;
+  background: rgba(33, 150, 243, 0.1);
+}
+
+.ratio-option .material-icons {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+.ratio-dropdown-button .material-icons:last-child {
+  margin-left: auto;
+  font-size: 1.25rem;
+  opacity: 0.7;
+  transition: transform 0.2s ease;
+}
+
+.ratio-dropdown-button:hover .material-icons:last-child {
+  opacity: 1;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.export-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: linear-gradient(135deg, #FBBF24, #F59E0B);
+  color: #fff;
+  border: 1px solid rgba(252, 211, 77, 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.22s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3), 0 1px 4px rgba(0, 0, 0, 0.4);
+  min-width: 130px;
+  justify-content: center;
+  letter-spacing: 0.3px;
+}
+
+.export-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #D97706, #FBBF24);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(251, 191, 36, 0.45);
+}
+
+.export-button:disabled {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.export-button .material-icons {
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+.export-button.exporting {
+  background: linear-gradient(45deg, #ff4081, #e91e63);
+  cursor: wait;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.export-button .rotating {
+  animation: rotate 1s linear infinite;
+}
+
+.export-progress {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 4px;
+}
+
+.export-progress::after {
+  content: '%';
+  margin-left: 1px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.user-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.06));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  border: 1px solid var(--muted);
+}
+
+.user-profile:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.sidebar {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  height: calc(100vh - 60px);
+  background: rgba(5, 5, 16, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(251, 191, 36, 0.1);
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar-nav {
+  background: rgba(5, 5, 16, 0.85);
+  padding: 10px 4px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(251, 191, 36, 0.1);
+  box-shadow: 1px 0 0 rgba(251, 191, 36, 0.06);
+  padding-top: 8px;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 6px;
+  color: #bbb;
+  cursor: pointer;
+  transition: background-color 220ms var(--motion-ease),
+    border-left-color 220ms var(--motion-ease),
+    color 220ms var(--motion-ease),
+    transform 160ms var(--motion-ease);
+  font-size: 0.78rem;
+  position: relative;
+  background: transparent !important;
+  border-radius: 8px;
+  width: 56px;
+  justify-content: center;
+  border-left: 4px solid transparent;
+  box-sizing: border-box;
+}
+
+.nav-item .material-icons {
+  font-size: 14px;
+  transition: all 0.3s ease;
+  padding: 0px 0px 8px 0px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.nav-item.active .material-icons svg path,
+nav-item:hover .material-icons svg path {
+  fill: #FCD34D;
+}
+
+.nav-item.active .material-icons svg.video_edit_icon path,
+.nav-item:hover .material-icons svg.video_edit_icon path {
+  stroke: #FCD34D;
+  fill: rgba(251, 191, 36, 0.1);
+}
+
+.nav-item.active,
+.nav-item:hover {
+  background: rgba(251, 191, 36, 0.1) !important;
+  color: #FDE68A;
+  transform: none;
+  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.2);
+}
+
+.nav-item.active::before {
+  display: none;
+}
+
+.nav-item.active .material-icons {
+  transform: scale(1.05);
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  background: rgba(8, 8, 20, 0.6);
+  padding: 12px;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.right_section_credit_wrp {
+  display: flex;
+}
+
+.export_btn {
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.1)) !important;
+  opacity: 1;
+  padding: 8px 12px;
+  width: 120px;
+  color: #FDE68A;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.content-header {
+  padding: 12px;
+  border-bottom: 1px solid #333;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(0, 0, 0, 0.06));
+  border-radius: 10px;
+  border: 1px solid var(--glass-strong);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.video-editor-container0 .top-strip .navheader {
+  display: flex;
+  padding: 0px 20px !important;
+  align-items: center;
+}
+
+.dashboard_collections a {
+  font-size: 14px;
+  text-decoration: none;
+  padding: 0px;
+}
+
+.ShortBuilder_text {
+  -webkit-font-smoothing: auto;
+  color: #fff;
+}
+
+.go_mycollections:hover,
+.go_dashboard:hover {
+  color: #d2fe18;
+  -webkit-font-smoothing: auto;
+}
+
+.dashboard_collections {
+  display: flex;
+  align-items: center;
+}
+
+.builder_go_icon svg {
+  width: 13px;
+  margin: 3px;
+}
+
+.content-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.content-header h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 1rem;
+  background: linear-gradient(180deg, #FCD34D, #FBBF24);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
+}
+
+.no-media-card {
+  margin: 16px 10px !important;
+  font-size: 13px !important;
+}
+
+.media-content {
+  height: calc(100vh - 134px);
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.upload-button {
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.15));
+  box-shadow: 0 4px 16px rgba(251, 191, 36, 0.15);
+  font-weight: 600;
+  font-size: 13px;
+  transform: translateZ(0);
+  will-change: transform;
+  -webkit-user-drag: none;
+}
+
+.upload-button:hover {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.35), rgba(245, 158, 11, 0.25));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.25);
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  padding: 0.5rem;
+  background: transparent;
+  border-radius: 8px;
+}
+
+.filter-dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: #181818;
+  border: 1px solid #333;
+  border-radius: 8px;
+  min-width: 180px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.media-item {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #202024;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: grab;
+  transition: transform 220ms var(--transition-fast),
+    box-shadow 220ms var(--transition-fast),
+    border-color 220ms var(--transition-fast);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  user-select: none;
+  -webkit-user-drag: element;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  will-change: transform, box-shadow;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+}
+
+.media-item:active {
+  cursor: grabbing;
+  transform: translateY(-2px) scale(0.98);
+  opacity: 0.8;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.45);
+  border-color: #2196f3;
+}
+
+.media-item:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: rgba(255, 214, 60, 0.18);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  z-index: 70;
+}
+
+.media-item img,
+.media-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.media-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(33, 150, 243, 0.1);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.media-item:active::before {
+  opacity: 1;
+}
+
+.media-item:hover .delete-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.delete-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 59, 59, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity var(--transition);
+  z-index: 10;
+}
+
+.delete-icon:hover {
+  background: #ff3b3b;
+  transform: scale(1.1);
+}
+
+.delete-icon::before,
+.delete-icon::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  background: white;
+  border-radius: 1px;
+}
+
+.delete-icon::before {
+  transform: rotate(45deg);
+}
+
+.delete-icon::after {
+  transform: rotate(-45deg);
+}
+
+.play-button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FBBF24, #F59E0B);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(251, 191, 36, 0.4);
+  transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.play-button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(251, 191, 36, 0.6);
+}
+
+.play-button:active {
+  transform: scale(0.95);
+}
+
+.play-button:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3) !important;
+  border: none !important;
+}
+
+.media-info {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  right: 6px;
+  padding: 6px 8px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.media-duration {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.upload-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+
+.main-content {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: #05050f;
+  overflow: hidden !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.preview-area {
+  flex: 1 1 auto !important;
+  background: #030309 !important;
+  margin: 0 !important;
+  margin-bottom: 0 !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px !important;
+  position: relative;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.timeline-container {
+  height: auto;
+  flex-shrink: 0;
+  align-items: center;
+  padding: 12px;
+  border-bottom: none !important;
+  overflow: hidden;
+  position: relative;
+  margin-top: auto !important;
+  background: rgba(5, 5, 16, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 0 !important;
+  min-height: 100px;
+  max-height: 60vh;
+  flex-direction: column;
+  border-top: 1px solid rgba(251, 191, 36, 0.12);
+  margin: 0 !important;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5), 0 -1px 0 rgba(251, 191, 36, 0.08);
+  transition: box-shadow var(--transition);
+  flex: 0 0 auto !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  z-index: 20;
+  width: 100% !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   TIMELINE CONTROLS
+   ========================================================================== */
+.timeline-controls {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 50px !important;
+  padding: 0 16px !important;
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 8px !important;
+  overflow: visible !important;
+}
+
+.time-display {
+  display: flex;
+  font-size: 13px;
+  gap: 0.5rem;
+  color: #d9d9d9;
+  font-weight: 600;
+}
+
+.playback-controls {
+  display: flex;
+  gap: 6px;
+  margin: 0 auto;
+  overflow: visible;
+  /* Allow tooltips to appear */
+}
+
+.timeline {
+  /* NO fixed height - let it fit naturally within parent */
+  /* Removed height: 100% to prevent viewport overflow */
+  flex: 1 1 auto !important;
+  max-height: calc(100vh - 400px) !important;
+  /* Prevent going beyond viewport */
+
+  /* Enable BOTH scrolling */
+  overflow-x: scroll !important;
+  /* ALWAYS show horizontal scrollbar */
+  overflow-y: scroll !important;
+  /* ALWAYS show vertical scrollbar */
+
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  position: relative !important;
+
+  /* Width to fit container */
+  width: 100% !important;
+
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+
+  /* Scrollbar styling */
+  scrollbar-width: auto !important;
+  scrollbar-color: rgba(251, 191, 36, 0.6) rgba(255, 255, 255, 0.1) !important;
+}
+
+.playhead-line {
+  position: absolute;
+  top: 0;
+  width: 2px !important;
+  height: 100%;
+  background-color: #FCD34D !important;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.5) !important;
+  opacity: 0.9 !important;
+  z-index: 9999 !important;
+  cursor: ew-resize;
+  margin-left: 0 !important;
+  will-change: left;
+  transform: translateZ(0);
+  transition: box-shadow var(--transition), transform var(--transition);
+  left: 0;
+}
+
+.timeline-markers {
+  display: block !important;
+  justify-content: space-between;
+  position: relative !important;
+  height: 24px;
+  margin: 0;
+  padding: 8px 6px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0.04));
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  margin-left: 6px !important;
+  margin-right: 10px !important;
+  padding-left: 2px;
+  width: auto !important;
+  flex: 0 0 28px;
+}
+
+.timeline-markers:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.marker {
+  position: absolute !important;
+  color: #666;
+  font-size: 0.8rem;
+  flex: 1;
+  text-align: center;
+  padding-left: 0 !important;
+  padding-top: 4px;
+  user-select: none;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.marker::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50% !important;
+  width: 1px;
+  height: 4px;
+  background: #333;
+  transition: height 0.2s ease;
+}
+
+.marker:nth-child(5n) {
+  color: #fff;
+}
+
+.marker:nth-child(5n)::after {
+  height: 8px;
+  background: #666;
+}
+
+.timeline-track {
+  position: relative;
+  height: 60px;
+  margin: 6px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  backdrop-filter: none;
+  /* Remove blur */
+  min-height: 56px;
+  border-bottom: 1px solid #333;
+  margin-bottom: 8px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0.04));
+  flex-shrink: 0;
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  padding: 6px 8px;
+}
+
+.timeline-track-label {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.8;
+  transform: translateY(-50%);
+  color: #fff;
+  letter-spacing: 1px;
+  z-index: 2;
+}
+
+.timeline-track.video-track {
+  background: rgba(255, 87, 34, 0.05);
+  border-left: 3px solid #ff5722;
+}
+
+.timeline-track.image-track {
+  background: rgba(76, 175, 80, 0.05);
+  border-left: 3px solid #4caf50;
+}
+
+.timeline-track.audio-track {
+  background: rgba(156, 39, 176, 0.05);
+  border-left: 3px solid #9c27b0;
+}
+
+.timeline-track.text-track {
+  background: rgba(50, 200, 255, 0.08);
+  border-left: 3px solid #32c8ff;
+  order: -1;
+}
+
+.timeline-item {
+  position: absolute;
+  height: 40px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06));
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  top: 8px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: transform var(--transition-fast), border-color var(--transition), box-shadow var(--transition);
+  will-change: transform, left;
+  touch-action: none;
+  user-select: none;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+.timeline-item.dragging {
+  z-index: 1000;
+  opacity: 0.7;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-color: #4a90e2;
+  cursor: grabbing;
+  transition: none !important;
+}
+
+
+.timeline-item .media-content {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+
+.timeline-item .media-content img,
+.timeline-item .media-content video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.timeline-item .resize-handle {
+  position: absolute;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  cursor: ew-resize;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-item .resize-handle .resize-indicator {
+  width: 4px;
+  height: 24px;
+  background: currentColor;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.2s, width 0.2s;
+}
+
+.timeline-item .resize-handle:hover .resize-indicator {
+  opacity: 1;
+  width: 6px;
+}
+
+.timeline-item .resize-handle.left {
+  left: 0;
+  color: rgba(255, 87, 34, 0.8);
+}
+
+.timeline-item .resize-handle.right {
+  right: 0;
+  color: rgba(255, 87, 34, 0.8);
+}
+
+.timeline-item:hover .resize-handle .resize-indicator {
+  opacity: 0.6;
+}
+
+.timeline-item .duration-indicator {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  text-align: center;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.timeline-item:hover .duration-indicator {
+  opacity: 1;
+}
+
+.timeline-item.video .resize-handle {
+  background: rgba(255, 87, 34, 0.3);
+}
+
+.timeline-item.audio .resize-handle {
+  background: rgba(156, 39, 176, 0.3);
+}
+
+.timeline-item.image .resize-handle {
+  background: rgba(76, 175, 80, 0.3);
+}
+
+.timeline-item.text .resize-handle {
+  background: rgba(33, 150, 243, 0.3);
+}
+
+.timeline-item .delete-button {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 0, 0, 0.7);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, background-color 0.2s;
+  z-index: 3;
+}
+
+.timeline-item:hover .delete-button {
+  opacity: 1;
+}
+
+.timeline-item img,
+.timeline-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-library {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.media-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #2d2d2d;
+  border-radius: 4px;
+  min-height: 100px;
+}
+
+.generate-button {
+  background: #4a90e2;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.generate-button:hover {
+  background: #357abd;
+}
+
+.icon-button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: transform var(--transition-fast), background var(--transition);
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.icon-button:hover {
+  background: rgba(255, 255, 255, 0.02);
+  transform: translateY(-3px);
+  border-color: rgba(251, 191, 36, 0.12);
+}
+
+.audio-preview {
+  width: 100%;
+  height: 100%;
+  background: #2d2d2d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.audio-preview::before {
+  content: '';
+  width: 40%;
+  height: 40%;
+  background: linear-gradient(to right,
+      #4a90e2 2px,
+      transparent 2px) 0 0 / 8px 100%,
+    linear-gradient(to right,
+      #4a90e2 2px,
+      transparent 2px) 12px 20% / 8px 60%,
+    linear-gradient(to right,
+      #4a90e2 2px,
+      transparent 2px) 24px 40% / 8px 20%,
+    linear-gradient(to right,
+      #4a90e2 2px,
+      transparent 2px) 36px 30% / 8px 40%,
+    linear-gradient(to right,
+      #4a90e2 2px,
+      transparent 2px) 48px 60% / 8px 40%;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  position: relative;
+}
+
+.audio-preview::after {
+  content: '♪';
+  position: absolute;
+  color: #4a90e2;
+  font-size: 24px;
+  opacity: 0.8;
+  bottom: 10%;
+  right: 10%;
+}
+
+.media-item:hover .audio-preview::before {
+  animation: audio-bars 1s ease-in-out infinite;
+}
+
+.media-item:hover .audio-preview::after {
+  animation: music-note 1s ease-in-out infinite;
+}
+
+@keyframes audio-bars {
+  0% {
+    background-position-y: 0, 20%, 40%, 30%, 60%;
+  }
+
+  50% {
+    background-position-y: 40%, 60%, 20%, 50%, 30%;
+  }
+
+  100% {
+    background-position-y: 0, 20%, 40%, 30%, 60%;
+  }
+}
+
+@keyframes music-note {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.audio-waveform {
+  width: 100%;
+  height: 100%;
+  background: #2a2a2a;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.audio-waveform::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 70%;
+  background: repeating-linear-gradient(90deg,
+      #4a90e2 0px,
+      #4a90e2 2px,
+      transparent 2px,
+      transparent 4px),
+    repeating-linear-gradient(90deg,
+      #4a90e2 0px,
+      #4a90e2 1px,
+      transparent 1px,
+      transparent 3px);
+  background-position: 0 0, 0 100%;
+  background-repeat: repeat-x;
+  background-size: 100% 50%;
+  opacity: 0.7;
+  animation: waveform-animation 2s linear infinite;
+}
+
+@keyframes waveform-animation {
+  0% {
+    clip-path: polygon(0 40%, 5% 45%, 10% 50%, 15% 45%, 20% 40%, 25% 35%, 30% 30%,
+        35% 35%, 40% 40%, 45% 45%, 50% 50%, 55% 45%, 60% 40%, 65% 35%,
+        70% 30%, 75% 35%, 80% 40%, 85% 45%, 90% 50%, 95% 45%, 100% 40%,
+        100% 60%, 95% 65%, 90% 70%, 85% 65%, 80% 60%, 75% 55%, 70% 50%,
+        65% 55%, 60% 60%, 55% 65%, 50% 70%, 45% 65%, 40% 60%, 35% 55%,
+        30% 50%, 25% 55%, 20% 60%, 15% 65%, 10% 70%, 5% 65%, 0 60%);
+  }
+
+  50% {
+    clip-path: polygon(0 45%, 5% 50%, 10% 45%, 15% 40%, 20% 35%, 25% 30%, 30% 35%,
+        35% 40%, 40% 45%, 45% 50%, 50% 45%, 55% 40%, 60% 35%, 65% 30%,
+        70% 35%, 75% 40%, 80% 45%, 85% 50%, 90% 45%, 95% 40%, 100% 45%,
+        100% 65%, 95% 60%, 90% 55%, 85% 60%, 80% 65%, 75% 70%, 70% 65%,
+        65% 60%, 60% 55%, 55% 50%, 50% 55%, 45% 60%, 40% 65%, 35% 70%,
+        30% 65%, 25% 60%, 20% 55%, 15% 50%, 10% 55%, 5% 60%, 0 65%);
+  }
+
+  100% {
+    clip-path: polygon(0 40%, 5% 45%, 10% 50%, 15% 45%, 20% 40%, 25% 35%, 30% 30%,
+        35% 35%, 40% 40%, 45% 45%, 50% 50%, 55% 45%, 60% 40%, 65% 35%,
+        70% 30%, 75% 35%, 80% 40%, 85% 45%, 90% 50%, 95% 45%, 100% 40%,
+        100% 60%, 95% 65%, 90% 70%, 85% 65%, 80% 60%, 75% 55%, 70% 50%,
+        65% 55%, 60% 60%, 55% 65%, 50% 70%, 45% 65%, 40% 60%, 35% 55%,
+        30% 50%, 25% 55%, 20% 60%, 15% 65%, 10% 70%, 5% 65%, 0 60%);
+  }
+}
+
+.audio-waveform:hover::before {
+  opacity: 0.9;
+  background-color: #5aa0f2;
+}
+
+.timeline-item.dragging .audio-waveform::before {
+  opacity: 1;
+  background-color: #6ab0ff;
+}
+
+.video-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.video-controls {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.video-preview {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.video-preview .remotion-player {
+  max-width: 100%;
+  max-height: 100%;
+  background-color: #000;
+}
+
+.media-content,
+.text-content,
+.music-content,
+.elements-content {
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+.media-content::-webkit-scrollbar,
+.text-content::-webkit-scrollbar,
+.music-content::-webkit-scrollbar,
+.elements-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.media-content::-webkit-scrollbar-track,
+.text-content::-webkit-scrollbar-track,
+.music-content::-webkit-scrollbar-track,
+.elements-content::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.media-content::-webkit-scrollbar-thumb,
+.text-content::-webkit-scrollbar-thumb,
+.music-content::-webkit-scrollbar-thumb,
+.elements-content::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.media-content::-webkit-scrollbar-thumb:hover,
+.text-content::-webkit-scrollbar-thumb:hover,
+.music-content::-webkit-scrollbar-thumb:hover,
+.elements-content::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+.audio-media-sidebar {
+  width: 100%;
+  background: #181818;
+  height: 100%;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.audio-media-header {
+  border-bottom: 1px solid #232323;
+}
+
+.audio-media-title {
+  color: #b3c6ff;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.audio-media-list {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 8px 0 8px;
+  overflow-y: scroll;
+  max-height: calc(100vh - 220px);
+}
+
+.audio-media-item {
+  display: flex;
+  align-items: center;
+  background: #232323;
+  border-radius: 10px;
+  padding: 0;
+  height: 56px;
+  width: 100%;
+  margin-bottom: 10px;
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.audio-media-item:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.audio-media-item.playing {
+  border: 1px solid rgba(252, 211, 77, 0.6);
+  background: rgba(251, 191, 36, 0.1) !important;
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2);
+}
+
+.audio-media-handle {
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  height: 100%;
+}
+
+.audio-media-thumb {
+  width: 40px;
+  height: 40px;
+  background: #181818;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 12px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.audio-media-thumb .material-icons {
+  font-size: 28px;
+  color: #aaa;
+}
+
+.audio-media-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.audio-media-filename {
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.audio-media-filename .material-icons {
+  font-size: 16px;
+  color: #aaa;
+}
+
+.audio-media-id {
+  color: #aaa;
+}
+
+.audio-media-title-text {
+  color: #aaa;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.audio-media-play-btn {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  color: #fff;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.audio-media-thumb:hover .audio-media-play-btn,
+.audio-media-play-btn:focus {
+  transform: scale(1.15);
+  box-shadow: 0 0 8px #6c47ff88;
+}
+
+.audio-media-play-btn.playing {
+  color: #6c47ff;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #6c47ff55;
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px #6c47ff11;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 #6c47ff55;
+  }
+}
+
+.generate-form-slider {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  height: 100vh;
+  background: #2d2d2d;
+  color: #fff;
+  box-shadow: -2px 0 16px rgba(0, 0, 0, 0.18);
+  z-index: 1000;
+  transition: right 0.35s cubic-bezier(.4, 0, .2, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px 24px 24px;
+}
+
+.generate-form-slider.open {
+  right: 0;
+}
+
+.generate-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  border-bottom: 2px #5c5c5c dotted;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.generate-form-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tab {
+  background: #181818;
+  border: none;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: background 0.18s, opacity 0.18s;
+}
+
+.tab.active,
+.tab:hover {
+  background: #232127;
+  opacity: 1;
+}
+
+.generate-form-label {
+  margin-bottom: 6px;
+  font-size: 1.1rem;
+  color: #888789;
+  font-weight: 500;
+}
+
+.generate-form-select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #000000;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.generate-form-textarea {
+  width: 100%;
+  min-height: 120px;
+  background: #181818;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  resize: vertical;
+}
+
+.enhance-btn {
+  background: none;
+  border: none;
+  color: #3f3f41;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 18px;
+  cursor: pointer;
+  float: right;
+  margin-left: auto;
+}
+
+.main-generate-btn {
+  width: 100%;
+  background: linear-gradient(90deg, rgb(77 161 247) 0%, rgb(89 144 203) 50%, rgb(91 77 247) 100%);
+  color: #e0dddd;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 18px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+
+.main-generate-btn:hover {
+  background: linear-gradient(90deg, rgb(40, 80, 122) 0%, rgb(40, 80, 122) 50%, rgb(50, 37, 191) 100%);
+  color: #bcbbbb;
+}
+
+.audio-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.timeline-clip {
+  display: inline-block;
+  background: #4f8cff;
+  border-radius: 4px;
+  margin: 2px;
+  padding: 4px 8px;
+  cursor: grab;
+}
+
+.track-dropzone,
+.new-track-dropzone {
+  min-height: 20px;
+  background: #222;
+  border: 1px dashed #888;
+  margin: 4px 0;
+}
+
+.thumb-strip {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.thumb-strip .thumb {
+  flex: 0 0 calc(100% / var(--thumb-count));
+  height: 100%;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.thumb-strip .thumb.placeholder {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.timeline-item.selected {
+  border: 2px solid #D1FE17 !important;
+  box-shadow: 0 10px 32px rgba(209, 165, 8, 0.06);
+}
+
+
+.timeline-container::after {
+  content: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg, #333 0%, #555 50%, #333 100%);
+  cursor: ns-resize;
+  border-radius: 8px 8px 0 0;
+  transition: background 0.2s ease;
+  z-index: 10;
+  display: none !important;
+}
+
+.timeline-container:hover::after {
+  background: linear-gradient(90deg, #444 0%, #666 50%, #444 100%);
+  height: 10px;
+}
+
+.timeline-container::after::before {
+  content: '⋮⋮';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #888;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.timeline-tracks {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.06));
+  border-radius: 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  cursor: default;
+  scrollbar-width: thin;
+  scrollbar-color: #555 #333;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  min-height: 0;
+  flex: 1 1 auto;
+  padding-bottom: 8px;
+}
+
+.timeline-tracks::-webkit-scrollbar {
+  width: 8px;
+}
+
+.timeline-tracks::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 4px;
+}
+
+.timeline-tracks::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.timeline-tracks::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+.timeline-resize-handle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg, #333 0%, #555 50%, #333 100%);
+  cursor: ns-resize;
+  border-top: 1px solid #555;
+  transition: background 0.2s ease;
+}
+
+.timeline-resize-handle:hover {
+  /* background: linear-gradient(90deg, #444 0%, #666 50%, #444 100%); */
+  height: 10px;
+}
+
+.timeline-resize-handle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 3px;
+  /* background: #888; */
+  border-radius: 2px;
+}
+
+.timeline-track-resize-handle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: transparent;
+  cursor: ns-resize;
+  border-top: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.timeline-track:hover .timeline-track-resize-handle {
+  border-top-color: #555;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-track-resize-handle:hover {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-top-color: #777;
+}
+
+.timeline-track-controls {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.timeline-track:hover .timeline-track-controls {
+  opacity: 1;
+}
+
+.track-control-btn {
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.track-control-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.add-track-button {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  background: #6c5ce7;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.add-track-button:hover {
+  background: #5a4fcf;
+  transform: scale(1.1);
+}
+
+.timeline-track.voice-track {
+  background: rgba(255, 193, 7, 0.05);
+  border-left: 3px solid #ffc107;
+}
+
+.timeline-track.music-track {
+  background: rgba(156, 39, 176, 0.05);
+  border-left: 3px solid #9c27b0;
+}
+
+.timeline-track.sfx-track {
+  background: rgba(76, 175, 80, 0.05);
+  border-left: 3px solid #4caf50;
+}
+
+.timeline-track.srt-track {
+  background: rgba(255, 193, 7, 0.05);
+  border-left: 3px solid #ffc107;
+}
+
+.timeline-track.gif-track {
+  background: rgba(33, 150, 243, 0.05);
+  border-left: 3px solid #2196f3;
+}
+
+.video-track .timeline-track-label::before {
+  content: "";
+}
+
+.audio-track .timeline-track-label::before {
+  content: " ";
+}
+
+.image-track .timeline-track-label::before {
+  content: " ";
+}
+
+.srt-track .timeline-track-label::before {
+  content: "";
+}
+
+.gif-track .timeline-track-label::before {
+  content: " ";
+}
+
+.timeline-empty-zone {
+  min-height: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px dashed rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  margin: 8px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 12px;
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: 0;
+  height: 64px;
+  place-items: center;
+}
+
+.timeline-empty-zone:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.timeline-empty-zone::before {
+  content: "Drop media here to create new track";
+}
+
+.video-track {
+  background: rgba(0, 120, 255, 0.10);
+}
+
+.audio-track {
+  background: rgba(0, 200, 120, 0.12);
+}
+
+.image-track {
+  background: rgba(240, 180, 40, 0.12);
+}
+
+.caption-track {
+  background: rgba(140, 80, 220, 0.12);
+}
+
+.gif-track {
+  background: rgba(255, 105, 180, 0.12);
+}
+
+.timeline-item.video {
+  outline: 2px solid rgba(0, 120, 255, .35);
+}
+
+.timeline-item.audio {
+  outline: 2px solid rgba(0, 200, 120, .35);
+}
+
+.timeline-item.image {
+  outline: 2px solid rgba(240, 180, 40, .35);
+}
+
+.timeline-item.text {
+  outline: 2px solid rgba(33, 150, 243, .35);
+  background: #2d3a4a;
+  border: 1px solid #32c8ff;
+}
+
+.timeline-item.caption {
+  outline: 2px solid rgba(140, 80, 220, .35);
+}
+
+.timeline-item.gif {
+  outline: 2px solid rgba(255, 105, 180, .35);
+}
+
+.timeline-empty-zone.dragover {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.timeline-empty-zone.between {
+  height: 28px;
+  border: 2px dashed rgba(86, 142, 255, 0.9);
+  border-radius: 8px;
+  margin: 6px 0 10px;
+  background: rgba(86, 142, 255, 0.08);
+}
+
+.video-transition-btn {
+  position: absolute;
+  top: 12px;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(108, 92, 231, 0.18);
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  animation: transitionPulse 2s infinite;
+}
+
+.transition-btn-icon {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.transition-btn-label {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.video-transition-btn:hover .transition-btn-label {
+  opacity: 1;
+}
+
+@keyframes transitionPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 2px 8px rgba(108, 92, 231, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 2px 12px rgba(108, 92, 231, 0.7);
+  }
+}
+
+.video-transition-btn.applied {
+  background: linear-gradient(135deg, #00b894, #00cec9);
+  border-color: #00cec9;
+  animation: none;
+}
+
+.video-transition-btn.applied:hover {
+  background: linear-gradient(135deg, #00b894, #00cec9);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-transition-btn.applied .transition-btn-icon {
+  font-size: 16px;
+}
+
+:root {
+  --bg-main: #05050f;
+  --bg-panel: #0d0d1a;
+  --accent: #FCD34D;
+  --accent-deep: #FBBF24;
+  --accent-glow: rgba(251, 191, 36, 0.35);
+  --muted: rgba(255, 255, 255, 0.08);
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-strong: rgba(255, 255, 255, 0.06);
+  --radius-lg: 14px;
+  --radius-sm: 8px;
+  --transition-fast: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition: 0.22s cubic-bezier(.2, .9, .2, 1);
+  --motion-ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.left-section,
+.center-section,
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.top-strip select,
+.ratio-dropdown-button,
+.ratio-dropdown-button select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.08));
+  color: #fff;
+  border: 1px solid var(--muted);
+  padding: 8px 10px;
+  font-size: 13px;
+  border-radius: 8px;
+  min-width: 140px;
+  cursor: pointer;
+  transition: all var(--transition-fast) ease;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.top-strip select:hover,
+.ratio-dropdown-button:hover {
+  border-color: rgba(251, 191, 36, 0.22);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(13, 13, 13, 0.6);
+}
+
+.top-strip select::-ms-expand {
+  display: none;
+}
+
+.top-strip select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 6px 18px rgba(251, 191, 36, 0.06);
+    transform: translateY(0);
+  }
+
+  50% {
+    box-shadow: 0 10px 28px rgba(251, 191, 36, 0.12);
+    transform: translateY(-1px);
+  }
+
+  100% {
+    box-shadow: 0 6px 18px rgba(251, 191, 36, 0.06);
+    transform: translateY(0);
+  }
+}
+
+.export-button:not(:disabled) {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.icon-button .material-icons {
+  font-size: 18px;
+  color: #fff;
+}
+
+/* FIX: Stop tracks from moving on hover */
+.timeline-track:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  /* Add a subtle brightness increase instead of movement to indicate focus */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.06));
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+a,
+button,
+input,
+select,
+.nav-item,
+.media-item,
+.timeline-item,
+.icon-button {
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+button:focus,
+.icon-button:focus,
+.nav-item:focus,
+.media-item:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Universal button focus removal - no borders whatsoever */
+button,
+.btn,
+.icon-button,
+.zoom-btn,
+.play-button,
+.export-button,
+.ratio-dropdown-button,
+.glass-dropdown-btn,
+.nav-item,
+.media-item {
+  outline: none !important;
+  box-sizing: border-box;
+}
+
+/* Remove ALL focus styles completely */
+button:focus,
+.btn:focus,
+.icon-button:focus,
+.zoom-btn:focus,
+.play-button:focus,
+.export-button:focus,
+.ratio-dropdown-button:focus,
+.glass-dropdown-btn:focus,
+.nav-item:focus,
+.media-item:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: inherit !important;
+  /* Keep original border, don't add focus border */
+}
+
+/* Remove focus from any clickable element */
+*:focus {
+  outline: none !important;
+}
+
+/* Remove focus from form elements too */
+input:focus,
+textarea:focus,
+select:focus,
+option:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove any webkit/browser specific focus styles */
+*:focus,
+*:active,
+*:visited {
+  -webkit-tap-highlight-color: #D1FE17 !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Universal blur removal - remove ALL blur effects */
+* {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Remove ANY filter blur effects */
+* {
+  filter: none !important;
+}
+
+/* Allow only specific non-blur filters if needed */
+.play-button:hover {
+  filter: brightness(1.1) !important;
+}
+
+/* Remove blur from any element that might have it */
+.dropdown-menu,
+.dropdown-menu-animated,
+.glass-dropdown-menu,
+.glass-dropdown-btn,
+.modern-dropdown-container,
+.dropdown-trigger,
+.timeline-controls,
+.right-controls,
+.zoom-group,
+.playback-controls {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+}
+
+.sidebar .sidebar-nav,
+.sidebar .sidebar-content {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.brand-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  transition: transform 260ms var(--motion-ease), box-shadow 260ms var(--motion-ease);
+  display: inline-block;
+  box-sizing: border-box;
+  z-index: 40;
+  position: relative;
+  will-change: box-shadow, transform;
+  animation: brand-logo-breathe 4000ms ease-in-out infinite;
+}
+
+.brand-logo:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
+}
+
+*,
+button,
+input,
+a {
+  transition-timing-function: var(--transition-fast);
+}
+
+.nav-item,
+.media-item,
+.icon-button,
+.export-button,
+.timeline-item,
+.timeline-track-controls .track-control-btn,
+.add-track-button {
+  transition: transform 180ms var(--transition-fast),
+    box-shadow 180ms var(--transition-fast),
+    border-color 180ms var(--transition-fast),
+    background-color 180ms var(--transition-fast),
+    opacity 140ms var(--transition-fast);
+  will-change: transform, box-shadow, border-color;
+}
+
+.button,
+.icon-button,
+.export-button,
+.timeline-item,
+.media-item {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button:active,
+.icon-button:active,
+.export-button:active,
+.timeline-item:active,
+.media-item:active {
+  transform: scale(0.98);
+}
+
+.nav-item.active,
+.nav-item:focus {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+  border-left: 4px solid #FFD63C !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  transform: translateX(0);
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-left-color: #FFD63C !important;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+  color: #fff;
+  transform: translateX(0);
+}
+
+.nav-item .material-icons,
+.nav-item svg,
+.nav-item img {
+  color: inherit;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.nav-item.active .material-icons,
+.nav-item.active svg,
+.nav-item.active img {
+  color: #fff !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.nav-item.active {
+  transition: border-left-color 240ms var(--transition-fast),
+    background-color 240ms var(--transition-fast),
+    color 240ms var(--transition-fast);
+}
+
+.canvas-frame {
+  position: absolute !important;
+  overflow: visible;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100% !important;
+  height: 100% !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+  animation: none !important;
+  border-radius: 0 !important;
+}
+
+.canvas-frame::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-sizing: border-box;
+  z-index: 30;
+  opacity: 0;
+  background: transparent;
+}
+
+.canvas-frame::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  z-index: 50;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+      rgba(255, 214, 60, 0) 0%,
+      rgba(255, 214, 60, 0.95) 10%,
+      rgba(255, 214, 60, 0.9) 30%,
+      rgba(255, 214, 60, 0.6) 60%,
+      rgba(255, 214, 60, 0) 100%);
+  mask-image: linear-gradient(#000, #000);
+  transform-origin: 50% 50%;
+  opacity: 0;
+  filter: none;
+  /* Remove blur */
+  mix-blend-mode: screen;
+}
+
+.canvas-frame.orientation-animate::after {
+  animation: brand-canvas-trace 900ms var(--motion-ease) forwards;
+}
+
+@keyframes brand-canvas-trace {
+  0% {
+    opacity: 0;
+    transform: rotate(-120deg) scale(0.8);
+    filter: blur(14px) saturate(0.6);
+  }
+
+  20% {
+    opacity: 1;
+    transform: rotate(-40deg) scale(0.95);
+    filter: blur(8px) saturate(1);
+  }
+
+  60% {
+    opacity: 1;
+    transform: rotate(100deg) scale(1.02);
+    filter: blur(6px) saturate(1.05);
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(220deg) scale(1.05);
+    filter: blur(22px) saturate(1);
+  }
+}
+
+.canvas-frame.orientation-animate {
+  box-shadow: 0 0 0 2px rgba(255, 214, 60, 0.04);
+  transition: box-shadow 340ms var(--motion-ease);
+}
+
+.brand-logo::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  filter: blur(8px) saturate(1.1);
+  background: radial-gradient(circle at 50% 50%,
+      rgba(255, 214, 60, 0.18) 0%,
+      rgba(255, 214, 60, 0.06) 30%,
+      transparent 60%);
+  animation: brand-logo-glow 4000ms ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes brand-logo-breathe {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 214, 60, 0.04);
+  }
+
+  40% {
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 0 6px 18px rgba(255, 214, 60, 0.06);
+  }
+
+  70% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 2px 10px rgba(255, 214, 60, 0.03);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 214, 60, 0.02);
+  }
+}
+
+@keyframes brand-logo-glow {
+  0% {
+    opacity: 0.00;
+    transform: scale(0.95);
+  }
+
+  30% {
+    opacity: 0.18;
+    transform: scale(1.02);
+  }
+
+  60% {
+    opacity: 0.08;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 0.00;
+    transform: scale(1.1);
+  }
+}
+
+.export-button,
+.export_btn,
+.main-generate-btn {
+  animation: brand-pulse-glow 3000ms ease-in-out infinite;
+  box-shadow: 0 6px 22px rgba(255, 214, 60, 0.06);
+  transition: box-shadow 220ms var(--transition-fast), transform 160ms var(--transition-fast);
+}
+
+.export-button:hover,
+.export_btn:hover,
+.main-generate-btn:hover {
+  box-shadow: 0 14px 40px rgba(255, 214, 60, 0.12);
+  transform: translateY(-1px) scale(1.01);
+}
+
+.export-button:disabled,
+.export_btn:disabled,
+.main-generate-btn:disabled {
+  animation: none;
+  box-shadow: none;
+}
+
+@keyframes brand-pulse-glow {
+  0% {
+    box-shadow: 0 6px 18px rgba(255, 214, 60, 0.04);
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    box-shadow: 0 18px 40px rgba(255, 214, 60, 0.10);
+    transform: translateY(-1px) scale(1.005);
+  }
+
+  100% {
+    box-shadow: 0 6px 18px rgba(255, 214, 60, 0.04);
+    transform: translateY(0) scale(1);
+  }
+}
+
+.timeline-item.selected,
+.timeline-item.selected.video {
+  border: 2px solid rgba(255, 214, 60, 0.95) !important;
+  box-shadow: 0 8px 28px rgba(255, 214, 60, 0.06), 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: border-color 200ms var(--transition-fast), box-shadow 200ms var(--transition-fast);
+}
+
+.timeline-item.bounce-on-select {
+  animation: brand-clip-bounce 280ms var(--motion-ease);
+}
+
+@keyframes brand-clip-bounce {
+  0% {
+    transform: scale(0.96);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+
+.nav-item,
+.nav-item * {
+  box-sizing: border-box;
+}
+
+.nav-item.active,
+.nav-item.active:hover,
+.nav-item.active:focus {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  background-image: none !important;
+  color: #fff !important;
+}
+
+.nav-item.active::before,
+.nav-item::before {
+  display: none !important;
+}
+
+
+@keyframes brand-playhead-pulse {
+  0% {
+    box-shadow: 0 6px 18px rgba(255, 214, 60, 0.05), 0 0 0 0 rgba(255, 214, 60, 0.02);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 14px 40px rgba(255, 214, 60, 0.12), 0 0 24px rgba(255, 214, 60, 0.04);
+    transform: scale(1.06);
+  }
+
+  100% {
+    box-shadow: 0 6px 18px rgba(255, 214, 60, 0.05), 0 0 0 0 rgba(255, 214, 60, 0.02);
+    transform: scale(1);
+  }
+}
+
+.icon-button,
+.export-button,
+.export_btn,
+.media-item,
+.timeline-item,
+.nav-item,
+.add-track-button,
+.track-control-btn {
+  transition: transform 180ms var(--motion-ease),
+    box-shadow 180ms var(--motion-ease),
+    border-color 180ms var(--motion-ease),
+    background-color 180ms var(--motion-ease);
+  will-change: transform, box-shadow, border-color;
+}
+
+.media-item:active,
+.icon-button:active,
+.export-button:active,
+.export_btn:active,
+.timeline-item:active {
+  transform: scale(0.98);
+}
+
+
+.nav-item,
+.media-item,
+.icon-button,
+.export-button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mini-overview {
+  background: #111;
+  margin-bottom: 0 !important;
+}
+
+.timeline-markers .marker {
+  font-size: 11px;
+  color: #999;
+}
+
+.text-track .timeline-track-label::before {
+  content: "T ";
+  font-weight: 800;
+  color: #32c8ff;
+}
+
+.timeline-item.text .media-content {
+  background: transparent;
+  color: #32c8ff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.timeline-item.text.selected {
+  border: 2px solid #32c8ff !important;
+  box-shadow: 0 0 15px rgba(50, 200, 255, 0.25) !important;
+}
+
+
+.timeline,
+.timeline-markers {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.upload-button,
+.upload-button * {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+.media-content,
+.media-library,
+.media-grid {
+  cursor: default !important;
+}
+
+.preview-area * {
+  pointer-events: auto;
+}
+
+
+.timeline-container::before,
+.timeline-container::after {
+  display: none !important;
+}
+
+.video-editor-container0>.video-editor-container {
+  flex: 1 1 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.video-editor-container>.main-content {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  justify-content: space-between !important;
+  min-height: 0 !important;
+}
+
+.main-content>.timeline-container {
+  margin-bottom: 0 !important;
+  padding-bottom: 8px !important;
+  border-bottom: none !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+html,
+body {
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.timeline-container>div:last-child {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.canvas-frame>div {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+@media (max-width: 1024px) {
+  .video-editor-container {
+    grid-template-columns: 64px 1fr;
+  }
+
+  .nav-item {
+    width: 48px;
+    font-size: 0.68rem;
+  }
+
+  .top-strip {
+    padding: 0 12px;
+    height: 64px;
+  }
+
+  .timeline-container {
+    margin: 8px;
+    padding: 10px;
+  }
+}
+
+
+
+
+/* ==========================================================================
+   TIMELINE ITEM POSITIONING & STYLING
+   ========================================================================== */
+
+.timeline-track:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.timeline-item,
+.timeline-item:hover,
+.timeline-item:active,
+.timeline-item.selected,
+.timeline-item.selected:hover,
+.timeline-item.dragging {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  height: 40px !important;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, filter 0.2s ease !important;
+  z-index: 10;
+}
+
+.timeline-item:hover,
+.timeline-item.selected:hover {
+  z-index: 100 !important;
+  border: 1px solid rgba(252, 211, 77, 0.7) !important;
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.35), inset 0 0 10px rgba(251, 191, 36, 0.1) !important;
+  filter: brightness(1.05);
+}
+
+.timeline-item:active,
+.timeline-item.dragging {
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.6) !important;
+  filter: brightness(0.9);
+  cursor: grabbing !important;
+}
+
+.timeline-item.selected {
+  border: 2px solid rgba(252, 211, 77, 0.7) !important;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3) !important;
+}
+
+
+
+
+
+
+/* Side Buttons (Skip/Rewind) */
+.playback-controls .icon-button {
+  background: transparent !important;
+  border: none !important;
+  color: #aaa !important;
+  padding: 8px !important;
+  transition: color 0.2s, transform 0.2s !important;
+  transform: none !important;
+  /* Fix jumping */
+}
+
+.playback-controls .icon-button:hover {
+  color: #fff !important;
+  background: transparent !important;
+  transform: scale(1.1) !important;
+}
+
+
+
+
+
+
+
+
+/* 2. MODERN RIGHT-SIDE CONTROLS CONTAINER */
+/* Targets the last div in timeline-controls (where ratio & slider live) */
+.timeline-controls>div:last-child {
+  background: rgba(255, 255, 255, 0.03);
+  /* Subtle glass pill background */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 100px;
+  /* Fully rounded ends */
+  padding: 4px 16px;
+  /* Spacing inside the pill */
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 16px !important;
+  /* Space between Dropdown and Slider */
+}
+
+.ratio-select {
+  background: transparent !important;
+  border: none !important;
+  color: #aaa !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  height: auto;
+  text-align: right;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.ratio-select:hover {
+  color: #fff !important;
+  background: transparent !important;
+}
+
+.ratio-select:focus {
+  outline: none;
+  color: #FCD34D !important;
+  border-color: rgba(251, 191, 36, 0.3) !important;
+  box-shadow: none !important;
+}
+
+.timeline-controls>div:last-child>div[style*="width: '1px'"] {
+  background: rgba(255, 255, 255, 0.1) !important;
+  height: 12px !important;
+}
+
+.timeline-controls>div:last-child .material-icons {
+  font-size: 16px !important;
+  color: #cfc3c3;
+  ;
+}
+
+input[type=range] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 80px !important;
+  height: 2px !important;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  cursor: pointer;
+  accent-color: #FCD34D;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #FCD34D;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+  margin-top: -4px;
+  border: none;
+  transition: transform 0.1s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+  background: #fff;
+}
+
+/* ==========================================================================
+   RIGHT CONTROLS
+   ========================================================================== */
+.right-controls {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 100px;
+  padding: 4px 16px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.divider-vertical {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.zoom-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.zoom-group input[type="range"] {
+  background-color: #FCD34D9e;
+}
+
+.zoom-slider::-moz-range-thumb {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #FCD34D !important;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+  border: none;
+  cursor: pointer;
+  transform: translateY(1px);
+}
+
+.zoom-slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #FCD34D !important;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+  margin-top: -3px;
+  border: none;
+  cursor: pointer;
+}
+
+.zoom-slider::-webkit-slider-thumb:hover,
+.zoom-slider::-webkit-slider-thumb:active {
+  background: #FCD34D !important;
+  transform: scale(1.2);
+  margin-top: -3px;
+}
+
+/* 5. NEW ZOOM BUTTONS (Clickable Circle Buttons) */
+.zoom-btn {
+  width: 24px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.zoom-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.zoom-btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  /* Keep original border */
+}
+
+.zoom-btn .material-icons {
+  font-size: 14px !important;
+  font-weight: bold;
+}
+
+
+
+/* ==========================================================================
+   MODERN ANIMATED DROPDOWN (Glass & Blur)
+   ========================================================================== */
+
+/* ==========================================================================
+   MODERN DROPDOWN
+   ========================================================================== */
+.modern-dropdown-container {
+  position: relative;
+  width: 150px;
+}
+
+.dropdown-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 4px;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+/* .dropdown-trigger:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+} */
+
+.dropdown-trigger .arrow {
+  font-size: 16px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropdown-trigger.active .arrow {
+  transform: rotate(180deg);
+  /* color: #FCD34D; */
+}
+
+.dropdown-menu-animated {
+  position: absolute;
+  bottom: 100% !important;
+  top: auto !important;
+  right: 0;
+  left: auto;
+  margin-bottom: 12px;
+  width: 260px;
+  max-height: 400px;
+  background: #1a1a1a !important;
+
+  /* SHARP BORDER & SHADOW FIX */
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+  /* Reduced blur from 40px to 12px */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  border-radius: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+
+  /* Animation props */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px) scale(0.95);
+  pointer-events: none !important;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+  transform-origin: bottom right;
+  z-index: 99999 !important;
+}
+
+.dropdown-menu-animated.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #ccc;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dropdown-item .material-icons {
+  font-size: 18px;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.dropdown-item:hover .material-icons {
+  color: #fff;
+}
+
+.dropdown-item.selected {
+  background: rgba(251, 191, 36, 0.1);
+  color: #FCD34D;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.dropdown-item.selected .material-icons {
+  color: #FCD34D;
+}
+
+
+.timeline-container,
+.timeline-controls,
+.right-controls,
+.modern-dropdown-container {
+  overflow: visible !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dropdown-trigger:focus,
+.dropdown-trigger:active,
+.dropdown-trigger.active {
+  /*outline: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+  background: rgba(255, 255, 255, 0.05) !important; */
+}
+
+
+
+/* ==========================================================================
+   PLAYHEAD LINE STYLING
+   ========================================================================== */
+.playhead-line {
+  width: 2px !important;
+  background-color: #FCD34D !important;
+  box-shadow: none !important;
+  opacity: 0.8 !important;
+  z-index: 9999 !important;
+}
+
+.playhead-line::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0px !important;
+  left: 50% !important;
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% 50% 50% 0 !important;
+  transform: translateX(-50%) rotate(-45deg) !important;
+  border: none !important;
+  background: #FCD34D !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+  transition: transform 0.2s ease, filter 0.2s ease !important;
+}
+
+.timeline:hover .playhead-line::before,
+.playhead-line:hover::before {
+  transform: translateX(-50%) rotate(-45deg) scale(1.1) !important;
+  background: #FCD34D !important;
+  filter: brightness(1.1) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8) !important;
+}
+
+
+
+/* ==========================================================================
+   TIMELINE TRACK LABEL
+   ========================================================================== */
+.timeline-track-label {
+  font-size: 0 !important;
+  width: 40px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+}
+
+.timeline-track-label::before {
+  font-size: 18px !important;
+  opacity: 1 !important;
+  margin-right: 0 !important;
+  filter: grayscale(100%) brightness(1.5);
+}
+
+/* ==========================================================================
+   FULL WIDTH CONTAINERS
+   ========================================================================== */
+.video-editor-container,
+.main-content,
+.timeline-container {
+  width: 100% !important;
+  max-width: 100vw !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.timeline-tracks {
+  padding-right: 0 !important;
+  width: 100% !important;
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   VIDEO PROGRESS BAR
+   ========================================================================== */
+.video-progress-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  overflow: visible !important;
+  z-index: 10001 !important;
+  cursor: pointer;
+  transition: height 0.1s ease;
+}
+
+.video-progress-container:hover {
+  height: 6px;
+}
+
+.video-progress-fill {
+  height: 100%;
+  background: #FCD34D !important;
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
+  border-radius: 0 4px 4px 0;
+  position: relative;
+}
+
+.video-progress-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 12px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.video-progress-knob {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 12px;
+  height: 12px;
+  background: #FCD34D;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+  transition: transform 0.1s ease;
+  pointer-events: none;
+}
+
+.video-progress-container:hover .video-progress-knob {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+
+
+/* ==========================================================================
+   TIMELINE RESIZER STYLING
+   ========================================================================== */
+.timeline-resizer {
+  position: absolute !important;
+  top: -6px !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 20px !important;
+  z-index: 10005 !important;
+  cursor: ns-resize !important;
+  background: transparent !important;
+  pointer-events: auto !important;
+  display: block !important;
+}
+
+.timeline-resizer span {
+  display: none !important;
+}
+
+.timeline-resizer::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  top: 8px !important;
+  height: 4px !important;
+  width: 0px !important;
+  border-radius: 100px;
+  /* background: rgba(255, 255, 255, 0.2) !important; */
+  /* border: 1px solid rgba(255, 255, 255, 0.1) !important; */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important; */
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.3s ease,
+    box-shadow 0.3s ease !important;
+}
+
+.timeline-resizer:hover::after {
+  /* width: 100px !important; */
+  /* background: #FCD34D !important; */
+  /* box-shadow: 0 0 15px rgba(251, 191, 36, 0.5) !important; */
+}
+
+.timeline-resizer:active::after {
+  width: 100% !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8) !important;
+  transition: width 0.2s ease-out !important;
+}
+
+
+
+
+
+
+
+.timeline-item {
+  transition: left 0.2s cubic-bezier(0.25, 0.8, 0.25, 1),
+    top 0.2s cubic-bezier(0.25, 0.8, 0.25, 1),
+    width 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease !important;
+  will-change: left, top;
+}
+
+.timeline-item.dragging {
+  transition: none !important;
+  z-index: 9999 !important;
+  transform: scale(1.02) translateY(-50%) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+
+
+
+/* --- DRAG HIGHLIGHTING --- */
+
+/* 1. Highlight Valid Track (Green/Neon Glow) */
+.timeline-track.drag-highlight {
+  border-color: #FCD34D !important;
+  background: rgba(251, 191, 36, 0.1) !important;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.2) inset !important;
+  transform: scale(1.005);
+  /* Subtle pop */
+  z-index: 50;
+}
+
+/* 2. Highlight New Track Zone (Blue/Info Glow) */
+/* This highlights the empty area at the bottom when creating a new track */
+.timeline-empty-zone.drag-highlight {
+  border-color: #D1FE17 !important;
+  background: rgba(209, 254, 23, 0.1) !important;
+  box-shadow: 0 0 20px rgba(209, 254, 23, 0.2) inset !important;
+  color: #fff;
+}
+
+.timeline-empty-zone.drag-highlight::before {
+  content: "+ Create New Track" !important;
+  color: #D1FE17;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+/* --- DRAG HIGHLIGHTING --- */
+
+/* 1. Highlight Valid Track (Green/Neon Glow) */
+/* Shows when you can drop the item here */
+.timeline-track.drag-highlight {
+  border-color: #FCD34D !important;
+  background: rgba(251, 191, 36, 0.1) !important;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.2) inset !important;
+  transform: scale(1.002);
+  z-index: 50;
+  transition: all 0.1s ease;
+}
+
+/* 2. Highlight New Track Zone (Blue/Info Glow) */
+/* Shows when you are dropping in empty space or incompatible track */
+.timeline-empty-zone.drag-highlight {
+  border-color: #D1FE17 !important;
+  background: rgba(209, 254, 23, 0.1) !important;
+  box-shadow: 0 0 20px rgba(209, 254, 23, 0.2) inset !important;
+  color: #fff;
+  transition: all 0.1s ease;
+}
+
+.timeline-empty-zone.drag-highlight::before {
+  content: "+ Create New Track" !important;
+  color: #D1FE17;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+/* ==========================================================================
+   AUDIO ITEM STYLING
+   ========================================================================== */
+.timeline-item.audio {
+  background: linear-gradient(180deg, rgba(255, 193, 7, 0.15), rgba(255, 193, 7, 0.3)) !important;
+  border: 1px solid #ffc107 !important;
+}
+
+.timeline-item.audio::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  background-image: repeating-linear-gradient(90deg, transparent 0px, transparent 2px, rgba(255, 193, 7, 0.5) 3px, rgba(255, 193, 7, 0.5) 4px) !important;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.timeline-item.audio:hover,
+.timeline-item.audio.selected {
+  border-color: #ffd740 !important;
+  box-shadow: 0 0 15px rgba(255, 215, 64, 0.4) !important;
+}
+
+.timeline-item.audio.selected {
+  border: 2px solid #FCD34D !important;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3) !important;
+}
+
+.timeline-item.audio.selected:hover {
+  border-color: #FCD34D !important;
+  box-shadow: 0 0 25px rgba(251, 191, 36, 0.5) !important;
+}
+
+
+/* ==========================================================================
+   COLOR CODING: DISTINCT COMPONENT COLORS
+   ========================================================================== */
+
+/* --- 1. TRACK BACKGROUNDS (Subtle Tint + Colored Left Border) --- */
+
+/* VIDEO: PURPLISH */
+.timeline-track.video-track {
+  background: rgba(156, 39, 176, 0.08) !important;
+  border-left: 3px solid #9c27b0 !important;
+}
+
+/* IMAGE: GREEN */
+.timeline-track.image-track {
+  background: rgba(76, 175, 80, 0.08) !important;
+  border-left: 3px solid #4caf50 !important;
+}
+
+/* TEXT: GRAY */
+.timeline-track.text-track {
+  background: rgba(200, 200, 200, 0.08) !important;
+  border-left: 3px solid #e0e0e0 !important;
+}
+
+/* AUDIO: AMBER/YELLOW (Distinct from others) */
+.timeline-track.audio-track,
+.timeline-track.music-track,
+.timeline-track.voice-track {
+  background: rgba(255, 193, 7, 0.08) !important;
+  border-left: 3px solid #ffc107 !important;
+}
+
+/* GIF: PINK */
+.timeline-track.gif-track {
+  background: rgba(233, 30, 99, 0.08) !important;
+  border-left: 3px solid #e91e63 !important;
+}
+
+/* CAPTION: TEAL */
+.timeline-track.caption-track,
+.timeline-track.srt-track {
+  background: rgba(0, 150, 136, 0.08) !important;
+  border-left: 3px solid #009688 !important;
+}
+
+
+/* --- 2. TIMELINE ITEMS (The Clips) --- */
+
+/* VIDEO ITEM: PURPLE */
+.timeline-item.video {
+  background: linear-gradient(180deg, rgba(156, 39, 176, 0.2), rgba(156, 39, 176, 0.4)) !important;
+  border: 1px solid #9c27b0 !important;
+}
+
+.timeline-item.video:hover,
+.timeline-item.video.selected {
+  border-color: #e040fb !important;
+  /* Lighter Neon Purple */
+  box-shadow: 0 0 15px rgba(224, 64, 251, 0.4) !important;
+}
+
+/* IMAGE ITEM: GREEN */
+.timeline-item.image {
+  background: linear-gradient(180deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.4)) !important;
+  border: 1px solid #4caf50 !important;
+}
+
+.timeline-item.image:hover,
+.timeline-item.image.selected {
+  border-color: #69f0ae !important;
+  /* Lighter Neon Green */
+  box-shadow: 0 0 15px rgba(105, 240, 174, 0.4) !important;
+}
+
+/* TEXT ITEM: GRAY */
+.timeline-item.text {
+  background: linear-gradient(180deg, rgba(200, 200, 200, 0.2), rgba(200, 200, 200, 0.4)) !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+.timeline-item.text:hover,
+.timeline-item.text.selected {
+  border-color: #ffffff !important;
+  /* Lighter White */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4) !important;
+}
+
+
+/* GIF ITEM: PINK */
+.timeline-item.gif {
+  background: linear-gradient(180deg, rgba(233, 30, 99, 0.2), rgba(233, 30, 99, 0.4)) !important;
+  border: 1px solid #e91e63 !important;
+}
+
+.timeline-item.gif:hover,
+.timeline-item.gif.selected {
+  border-color: #ff4081 !important;
+  box-shadow: 0 0 15px rgba(255, 64, 129, 0.4) !important;
+}
+
+/* CAPTION ITEM: TEAL */
+.timeline-item.caption,
+.timeline-item.caption-track {
+  background: linear-gradient(180deg, rgba(0, 150, 136, 0.2), rgba(0, 150, 136, 0.4)) !important;
+  border: 1px solid #009688 !important;
+}
+
+.timeline-item.caption:hover,
+.timeline-item.caption.selected {
+  border-color: #64ffda !important;
+  box-shadow: 0 0 15px rgba(100, 255, 218, 0.4) !important;
+}
+
+
+/* --- 3. RESIZE HANDLES (Match the Clip Color) --- */
+.timeline-item.video .resize-handle .resize-indicator {
+  background: #9c27b0 !important;
+}
+
+.timeline-item.image .resize-handle .resize-indicator {
+  background: #4caf50 !important;
+}
+
+.timeline-item.text .resize-handle .resize-indicator {
+  background: #e0e0e0 !important;
+}
+
+.timeline-item.audio .resize-handle .resize-indicator {
+  background: #ffc107 !important;
+}
+
+.timeline-item.gif .resize-handle .resize-indicator {
+  background: #e91e63 !important;
+}
+
+.timeline-item.caption .resize-handle .resize-indicator {
+  background: #009688 !important;
+}
+
+
+/* --- 4. ICONS (Track Labels) --- */
+.video-track .timeline-track-label::before {
+  color: #ce93d8;
+  text-shadow: 0 0 5px rgba(156, 39, 176, 0.5);
+}
+
+.image-track .timeline-track-label::before {
+  color: #a5d6a7;
+  text-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.text-track .timeline-track-label::before {
+  color: #e0e0e0;
+  text-shadow: 0 0 5px rgba(200, 200, 200, 0.5);
+}
+
+.audio-track .timeline-track-label::before {
+  color: #ffe082;
+  text-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+}
+
+.gif-track .timeline-track-label::before {
+  color: #f48fb1;
+  text-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
+}
+
+.caption-track .timeline-track-label::before {
+  color: #80cbc4;
+  text-shadow: 0 0 5px rgba(0, 150, 136, 0.5);
+}
+
+/* --- MULTI-SELECT STYLES --- */
+
+/* Selection Box (Lasso) */
+.timeline-selection-box {
+  position: absolute;
+  background: rgba(251, 191, 36, 0.2);
+  /* Neon Fill */
+  border: 1px solid #FCD34D;
+  z-index: 9999;
+  pointer-events: none;
+  /* Let clicks pass through */
+}
+
+/* Selected Item Highlight */
+.timeline-item.multi-selected {
+  border: 2px solid #FCD34D !important;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5) !important;
+  z-index: 100;
+}
+
+/* Toggle Button Active State */
+.icon-button.active-mode {
+  background: #FCD34D !important;
+  color: #000 !important;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   ELEMENTS PANEL STYLES (3D FLIP & GRID)
+   ========================================================================== */
+
+/* 1. RESPONSIVE GRID LAYOUT */
+.elements-grid-container {
+  display: grid !important;
+  /* Columns automatically sizing to min 90px */
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)) !important;
+  gap: 12px !important;
+  width: 100% !important;
+  padding-bottom: 50px !important;
+  /* Space for scrolling */
+  padding-right: 5px !important;
+}
+
+/* 2. CARD CONTAINER (Scene) */
+.element-card {
+  aspect-ratio: 1/1 !important;
+  perspective: 1000px !important;
+  /* Creates the 3D depth */
+  background: transparent !important;
+  cursor: grab !important;
+}
+
+/* 3. INNER FLIPPER (The Moving Part) */
+.element-card-inner {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  text-align: center !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transform-style: preserve-3d !important;
+  border-radius: 12px !important;
+}
+
+/* FLIP TRIGGER */
+.element-card:hover .element-card-inner {
+  transform: rotateY(180deg) !important;
+}
+
+/* 4. COMMON FACE STYLES (Front & Back) */
+.element-card-front,
+.element-card-back {
+  position: absolute !important;
+  inset: 0 !important;
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+  /* Hides the back when facing away */
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* --- FRONT FACE (Clean Image) --- */
+.element-card-front {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.element-card-front img {
+  width: 70% !important;
+  height: 70% !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4)) !important;
+}
+
+/* --- BACK FACE (Info & Blur) --- */
+.element-card-back {
+  transform: rotateY(180deg) !important;
+  background: #000 !important;
+  border: 1px solid #FCD34D !important;
+  /* Neon Border */
+  flex-direction: column !important;
+}
+
+/* Blurred Background Image Layer */
+.element-card-back-bg {
+  position: absolute !important;
+  inset: -10px !important;
+  /* Oversize to hide blur edges */
+  background-size: cover !important;
+  background-position: center !important;
+  filter: brightness(0.4) !important;
+  /* Remove blur, keep brightness */
+  opacity: 0.8 !important;
+  z-index: 0 !important;
+}
+
+/* Content Layer (Text & Icon) */
+.element-card-back-content {
+  position: relative !important;
+  z-index: 2 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+}
+
+.element-name {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+  text-align: center;
+  padding: 0 4px;
+}
+
+.add-icon {
+  font-size: 24px !important;
+  color: #FCD34D !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.5) !important;
+}
+
+/* 5. CATEGORY FILTER BAR SCROLL FIX */
+.elements-filter-bar {
+  display: flex !important;
+  overflow-x: auto !important;
+  white-space: nowrap !important;
+  max-width: 100% !important;
+  padding-bottom: 5px !important;
+  margin-bottom: 10px !important;
+  scrollbar-width: none;
+  /* Hide scrollbar Firefox */
+}
+
+.elements-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar Chrome */
+
+
+
+
+/* 1. LOCK THE SIDEBAR WIDTH */
+/* This prevents the "Elements" panel from ever growing wider than 360px */
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 360px !important;
+  /* Force fixed width */
+  min-width: 360px !important;
+  /* Prevent shrinking */
+  max-width: 360px !important;
+  /* Prevent expanding (The Fix) */
+  background: #000;
+  z-index: 10;
+  overflow: hidden;
+  /* Cut off anything sticking out */
+}
+
+/* 2. CONSTRAIN THE CONTENT AREA */
+/* This is the container holding your ElementsPanel */
+.sidebar-content {
+  flex: 1;
+  /* Fill remaining space after nav */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* Ensure it doesn't exceed parent */
+  min-width: 0;
+  /* CRITICAL FLEXBOX FIX: Allows children to shrink/scroll */
+  height: 100%;
+  overflow: hidden;
+  /* Force scrollbars to appear inside, not outside */
+  background: #111;
+}
+
+/* 3. ENSURE THE PANEL ITSELF FITS */
+.elements-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.video-editor-container {
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 60px);
+  /* Adjust based on your header height */
+  overflow: hidden;
+  /* Prevent window scrollbars */
+}
+
+.timeline-track.drop-target {
+  outline: 2px solid rgba(209, 254, 23, 0.9);
+  outline-offset: -2px;
+  background: rgba(209, 254, 23, 0.08);
+}
+
+.timeline-drag-ghost {
+  user-select: none;
+}
+
+/* new css ------------------------------------------ */
+/* ==========================================================================
+   VIDEO EDITOR TIMELINE CSS (MERGED & CLEANED)
+   ========================================================================== */
+
+/* -----------------------------------------------------------
+   1. ANIMATIONS
+   ----------------------------------------------------------- */
+
+/* Smooth expansion for new tracks */
+@keyframes track-enter-smooth {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scaleY(0.8);
+    height: 0;
+    min-height: 0;
+    margin-bottom: 0;
+    padding: 0;
+    border-width: 0;
+  }
+
+  40% {
+    opacity: 0.5;
+    height: 60px;
+    min-height: 56px;
+    margin-bottom: 8px;
+    padding-top: 6px;
+    padding-bottom: 8px;
+    border-width: 1px;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    height: 60px;
+  }
+}
+
+/* Soft landing animation when an item is dropped */
+@keyframes soft-settle {
+  0% {
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* -----------------------------------------------------------
+   2. TIMELINE TRACKS
+   ----------------------------------------------------------- */
+
+.timeline-tracks {
+  scroll-behavior: smooth;
+  transition: padding 0.3s ease;
+  overflow: visible !important;
+  /* Allow dragging outside bounds */
+}
+
+.timeline-track {
+  /* Trigger creation animation */
+  animation: track-enter-smooth 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+
+  /* Layout & Stability */
+  position: relative;
+  overflow: hidden;
+  transform-origin: top center;
+  transition: background-color 0.2s ease;
+  z-index: 1;
+  will-change: height, transform, opacity, margin;
+
+  /* Ensure 3D context for z-index layering */
+  transform-style: flat;
+}
+
+/* Invisible Bridge: Covers the gap between tracks to prevent drag jitter */
+.timeline-track::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 10px;
+  z-index: -1;
+}
+
+/* Hover Effect (No Layout Shift) */
+.timeline-track:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  transform: none !important;
+}
+
+/* -----------------------------------------------------------
+   3. TIMELINE ITEMS (Base State)
+   ----------------------------------------------------------- */
+
+.timeline-item {
+  /* Vertical Centering */
+  top: 50% !important;
+  transform: translateY(-50%) scale(1);
+  z-index: 10;
+
+  /* SMOOTH RIPPLE TRANSITION: 
+     When items move to make space for the ghost, they use this smooth timing. */
+  transition:
+    left 0.2s cubic-bezier(0.2, 0, 0.2, 1),
+    top 0.2s cubic-bezier(0.2, 0, 0.2, 1),
+    width 0.1s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  will-change: left, top, transform;
+}
+
+/* Apply soft settle only when not being dragged */
+.timeline-item:not(.dragging):not(.ghost-drag):not(.shadow-frame) {
+  animation: soft-settle 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+/* -----------------------------------------------------------
+   4. ACTIVE DRAG STATES (The Moving Item)
+   ----------------------------------------------------------- */
+
+/* The actual element being moved (follows mouse) */
+.timeline-item.dragging,
+.timeline-item.ghost-drag {
+  /* DISABLE transitions so it follows mouse 1:1 instantly */
+  transition: none !important;
+
+  /* High visibility layer */
+  z-index: 999999 !important;
+  opacity: 1 !important;
+
+  /* Visual Pop */
+  transform: translateY(-50%) scale(1.05) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 0 2px #FCD34D !important;
+  /* Neon Glow */
+  filter: brightness(1.1);
+
+  /* CRITICAL: Let mouse events pass through to detect the track below */
+  pointer-events: none !important;
+  cursor: grabbing !important;
+}
+
+/* -----------------------------------------------------------
+   5. DROP ZONES & SHADOW FRAMES (The "Preview")
+   ----------------------------------------------------------- */
+
+/* The Yellow Mask / Placeholder */
+.timeline-item.shadow-frame,
+.timeline-item.is-preview {
+  /* Appearance */
+  background-color: rgba(255, 235, 59, 0.4) !important;
+  border: 2px dashed #f1c40f !important;
+  box-shadow: 0 0 10px rgba(241, 196, 15, 0.3) !important;
+
+  /* Layering: Above track, below dragging item */
+  z-index: 50 !important;
+  pointer-events: none !important;
+
+  /* Visuals */
+  opacity: 1 !important;
+  filter: grayscale(100%) opacity(0.8);
+  /* Desaturate content inside */
+
+  /* Smooth Snapping: The preview slides into position */
+  transition: left 0.1s cubic-bezier(0.2, 0, 0.2, 1),
+    top 0.1s cubic-bezier(0.2, 0, 0.2, 1) !important;
+  will-change: left, top;
+}
+
+/* Label text inside the drop zone */
+.timeline-item.shadow-frame::after,
+.timeline-item.is-preview::after {
+  content: "Insert";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 10px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* -----------------------------------------------------------
+   6. COLLISION STATES (Invalid Drop)
+   ----------------------------------------------------------- */
+
+.timeline-item.shadow-frame.collision {
+  background-color: rgba(255, 0, 0, 0.3) !important;
+  border-color: #ff4444 !important;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3) !important;
+}
+
+.timeline-item.shadow-frame.collision::after {
+  content: "Occupied";
+  background: rgba(255, 0, 0, 0.8);
+}
+
+/* -----------------------------------------------------------
+   7. UTILITY & LEGACY
+   ----------------------------------------------------------- */
+
+/* Dim original item if it is left behind as a placeholder */
+.timeline-item.is-placeholder {
+  opacity: 0.3 !important;
+  filter: grayscale(100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Ensure container allows overflow for dragging outside */
+.video-editor-container {
+  overflow: visible !important;
+}
+
+
+
+/* VideoEditor.css */
+
+/* 1. THE DRAGGED GHOST (Follows Mouse) */
+.timeline-item.dragging {
+  position: fixed !important;
+  /* Break out of the track */
+  z-index: 99999 !important;
+  /* Float above everything */
+  opacity: 0.9 !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 0 2px #FCD34D !important;
+  /* Neon Glow */
+  pointer-events: none !important;
+  /* Critical: Lets mouse events pass through to detect tracks below */
+  transform-origin: center center;
+  transition: none !important;
+  /* No lag while moving */
+  will-change: transform, top, left;
+  cursor: grabbing !important;
+}
+
+/* 2. THE SHADOW PREVIEW (Where it will drop) */
+.timeline-item.shadow-preview {
+  opacity: 0.5 !important;
+  filter: grayscale(100%);
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px dashed #aaa !important;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+
+/* =========================================
+   GHOST DRAG & DROP STYLES
+   ========================================= */
+
+/* The item actively being dragged (follows mouse) */
+.timeline-item.dragging {
+  position: fixed !important;
+  z-index: 99999 !important;
+  opacity: 0.9 !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 0 2px #FCD34D !important;
+  /* Neon Highlight */
+  pointer-events: none !important;
+  /* Lets mouse events pass through to detect tracks */
+  transition: none !important;
+  cursor: grabbing !important;
+  will-change: transform, left, top;
+}
+
+/* The placeholder showing where it will drop */
+.timeline-item.shadow-preview {
+  opacity: 0.4 !important;
+  filter: grayscale(100%);
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px dashed #aaa !important;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Optional: Highlight valid drop zones (tracks) */
+.timeline-track:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+
+.timeline-track.drop-target {
+  outline: 2px solid rgba(80, 160, 255, 0.9);
+  outline-offset: -2px;
+  background: rgba(80, 160, 255, 0.08);
+}
+
+.timeline-drag-ghost {
+  user-select: none;
+}
+
+
+/* =========================================
+   LOCKED STATES
+   ========================================= */
+
+/* LOCKED TRACK (The row background) */
+.timeline-track.locked {
+  background-image: repeating-linear-gradient(45deg,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 10px,
+      transparent 10px,
+      transparent 20px) !important;
+  cursor: not-allowed !important;
+}
+
+/* LOCKED ITEM (The individual clip) */
+.timeline-item.locked {
+  border: 1px solid rgba(255, 77, 77, 0.5) !important;
+  /* Red-ish tint border */
+  opacity: 0.8;
+}
+
+/* Add a padlock icon overlay for locked clips */
+.timeline-item.locked::after {
+  content: "lock";
+  font-family: 'Material Icons';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 14px;
+  color: rgba(255, 77, 77, 0.8);
+  pointer-events: none;
+}
+
+/* Prevent hover effects on locked items */
+.timeline-item.locked:hover {
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+}
+
+/* Hide resize handles on locked items */
+.timeline-item.locked .resize-handle {
+  display: none !important;
+}
+
+/* TRACK HEADER LOCKED STATE */
+.track-header.locked {
+  background: #2a1a1a !important;
+  /* Slight red tint for header */
+}
+
+.track-header .material-icons {
+  transition: all 0.2s ease;
+}
+
+/* Hover effect for the track lock button */
+.track-header:hover .icon-button-small {
+  opacity: 1 !important;
+}
+
+/* Add to VideoEditor.css */
+
+.gap-item {
+  pointer-events: auto !important;
+  transition: border 0.1s ease, background 0.1s ease;
+}
+
+.gap-item:hover {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  opacity: 0.9 !important;
+}
+
+.delete-button:hover {
+  transform: scale(1.1);
+}
+
+
+/* Add/Update in VideoEditor.css */
+
+.gap-item.selected {
+  z-index: 100 !important;
+  /* Bring to front when selected */
+}
+
+/* Ensure material icons are loaded or fallback to text if needed */
+.delete-button .material-icons {
+  pointer-events: none;
+}
+
+.gap-item {
+  pointer-events: auto !important;
+}
+
+.gap-item.selected {
+  z-index: 100 !important;
+}
+
+
+
+/* Gap Item Base Style */
+.gap-item {
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+  pointer-events: auto !important;
+  /* Forces the div to accept clicks */
+  transition: background-color 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Subtle hatched pattern to indicate "empty space" */
+  background-image: repeating-linear-gradient(45deg,
+      transparent,
+      transparent 5px,
+      rgba(255, 255, 255, 0.05) 5px,
+      rgba(255, 255, 255, 0.05) 10px);
+}
+
+/* Hover Effect */
+.gap-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Selected State */
+.gap-item.selected {
+  background-color: rgba(255, 59, 59, 0.2) !important;
+  /* Red tint */
+  border-left: 2px solid #ff4444;
+  border-right: 2px solid #ff4444;
+  z-index: 95;
+}
+
+/* Delete Icon (Middle of gap) */
+.gap-delete-icon {
+  width: 24px;
+  height: 24px;
+  background: #ff4444;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+  line-height: 1;
+}
+
+
+
+/* ==========================================================================
+   UPDATED: SMALLER TRANSITION BUTTONS
+   Paste this at the very bottom of VideoEditor.css
+   ========================================================================== */
+
+.video-transition-btn {
+  width: 22px !important;
+  /* Reduced from 32px */
+  height: 22px !important;
+  /* Reduced from 32px */
+  box-shadow: 0 2px 6px rgba(108, 92, 231, 0.2) !important;
+  /* Smaller shadow */
+}
+
+.transition-btn-icon {
+  font-size: 12px !important;
+  /* Reduced icon size */
+  line-height: 1 !important;
+}
+
+/* Adjust the checkmark size when a transition is applied */
+.video-transition-btn.applied .transition-btn-icon {
+  font-size: 10px !important;
+}
+
+/* Adjust hover effect for the smaller button */
+.video-transition-btn:hover {
+  transform: translate(-50%, -50%) scale(1.15) !important;
+}
+
+
+/* Lasso Selection Box */
+.timeline-lasso-box {
+  position: absolute;
+  background: rgba(251, 191, 36, 0.15);
+  /* Your Neon Accent with opacity */
+  border: 1px solid #FCD34D;
+  z-index: 9999;
+  pointer-events: none;
+  /* Crucial: lets clicks pass through */
+  border-radius: 4px;
+}
+
+/* Multi-Selected Item Highlight */
+.timeline-item.multi-selected {
+  border: 2px solid #FCD34D !important;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5) !important;
+  z-index: 100 !important;
+}
+
+
+/* Add to VideoEditor.css */
+.timeline-item.selected.group-moving {
+  opacity: 0.8;
+  transform: translateY(-2px);
+  transition: transform 0.1s ease;
+  outline: 2px solid #FCD34D;
+}
+
+/* Ensure the ghost reflects multiple items */
+.timeline-drag-ghost.multi-ghost::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: -4px;
+  bottom: -4px;
+  background: rgba(251, 191, 36, 0.2);
+  border: 1px solid #FCD34D;
+  z-index: -1;
+  border-radius: 6px;
+}
+
+
+
+/* NEW CSS KI NEW CSS */
+
+/* ==========================================================================
+   1. GLOBAL UI LAYOUT & HEADER
+   ========================================================================== */
+
+.top-strip {
+  flex: 0 0 60px !important;
+  height: 68px;
+  min-height: 60px !important;
+  max-height: 60px !important;
+  width: 100% !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.18) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--muted);
+  grid-column: 1 / -1;
+  backdrop-filter: none;
+  /* Remove blur */
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  /* Ensure it sits above standard side panels */
+  z-index: 2000 !important;
+}
+
+/* Ensure parent containers don't clip floating elements */
+.timeline-controls,
+.right-controls,
+.timeline-container {
+  overflow: visible !important;
+  z-index: 2000 !important;
+}
+
+/* ==========================================================================
+     2. MODERN ANIMATED DROPDOWN
+     ========================================================================== */
+
+/* Container for the button and menu */
+.modern-dropdown-container {
+  position: relative;
+  z-index: 2005 !important;
+}
+
+.dropdown-menu-animated {
+  position: absolute;
+  /* Orientation: Drops UPWARDS by default based on your latest snippet. 
+       Change 'bottom' to 'auto' and 'top' to '100%' if you want it to drop DOWN. */
+  bottom: 100% !important;
+  top: auto !important;
+  right: 0;
+  left: auto;
+
+  margin-bottom: 12px;
+  /* Spacing from button */
+  width: 260px;
+  max-height: 400px;
+
+  background: #1a1a1a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 12px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+
+  /* Animation State */
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  pointer-events: none;
+  transform-origin: bottom right;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Very high Z-index to beat properties panels */
+  z-index: 99999 !important;
+}
+
+/* Open State */
+.dropdown-menu-animated.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+     3. DRAG DURATION POPOVER (The Floating Time Bubble)
+     ========================================================================== */
+
+.drag-duration-popover {
+  /* Critical: Fixed positioning breaks it out of timeline scroll containers */
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  /* Max Z-Index (Top of browser) */
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+
+  /* Visuals */
+  background: #121212;
+  border: 1px solid #FCD34D;
+  /* Neon accent */
+  border-radius: 6px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  /* Ignore mouse clicks */
+
+  /* Typography */
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: #fff;
+
+  /* Smooth entry animation */
+  animation: popover-fade-in 0.15s ease-out;
+}
+
+/* Inner Text Colors */
+.drag-duration-popover .time-start {
+  color: #FCD34D;
+}
+
+.drag-duration-popover .arrow {
+  color: #666;
+  font-size: 10px;
+}
+
+.drag-duration-popover .time-end {
+  color: #fff;
+}
+
+/* The Triangle Arrow pointing down to the clip */
+.drag-duration-popover .popover-arrow {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: #121212;
+  border-right: 1px solid #FCD34D;
+  border-bottom: 1px solid #FCD34D;
+}
+
+@keyframes popover-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-12px);
+  }
+}
+
+/* ==========================================================================
+     4. TIMELINE ITEM & DRAGGING STATES
+     ========================================================================== */
+
+/* Standard item transition */
+.timeline-item {
+  transition: box-shadow 0.2s ease;
+}
+
+/* Active Dragging State */
+.timeline-item.dragging {
+  /* Allows content to spill out if necessary */
+  overflow: visible !important;
+  /* Brings the item to the very front */
+  z-index: 9999 !important;
+  /* Neon glow effect */
+  box-shadow: 0 0 0 2px #FCD34D, 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  opacity: 1 !important;
+}
+
+/* Hide standard duration indicator while dragging (since we have the popover) */
+.timeline-item.dragging .duration-indicator,
+.timeline-item.dragging .resize-handle {
+  display: none !important;
+}
+
+/* Container that covers the clip content while dragging */
+.item-drag-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: none;
+  /* Remove blur */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* The pill inside the overlay (Alternative to popover, if used) */
+.drag-info-pill {
+  background: #111;
+  border: 1px solid #FCD34D;
+  border-radius: 6px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.drag-info-pill .time-val {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.drag-info-pill .time-val.start {
+  color: #FCD34D;
+}
+
+.drag-info-pill .time-val.end {
+  color: #fff;
+}
+
+.drag-info-pill .drag-arrow {
+  color: #888;
+  font-size: 10px;
+}
+
+/* ==========================================================================
+     5. GUIDES & SNAPPING VISUALS
+     ========================================================================== */
+
+/* General Alignment Guide */
+.timeline-guide-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 2px dotted #FCD34D;
+  /* Neon accent */
+  z-index: 99999;
+  pointer-events: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+/* Magnetic Snap Line (Specific vertical indicator) */
+.timeline-snap-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 2px dashed #FCD34D;
+  z-index: 99999;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+  transition: opacity 0.1s;
+}
+
+/* Highlight style for the item being snapped to */
+.timeline-item.snap-target {
+  border-color: #FCD34D !important;
+}
+
+/* ===========================
+   CRITICAL FIXES FOR CLICKABILITY
+=========================== */
+
+/* 1. Ensure Timeline Items are clickable and visible above background layers */
+.timeline-item {
+  pointer-events: auto !important;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* 2. Ghosts and Popups must NEVER block mouse events */
+.timeline-ghost-group,
+.drag-duration-popover,
+.timeline-guide-line {
+  pointer-events: none !important;
+}
+
+/* 3. Dropdown Container Fix 
+   (If this container covers the screen, it blocks clicks. We make it passthrough) */
+.modern-dropdown-container {
+  pointer-events: none;
+}
+
+.modern-dropdown-container>* {
+  pointer-events: auto;
+  /* Re-enable pointer events on the button/menu itself */
+}
+
+/* 4. Timeline Container Isolation 
+   Creates a new stacking context so the items aren't buried behind the header */
+.timeline-tracks-container {
+  isolation: isolate;
+  z-index: 1;
+}
+
+
+
+/* =========================================
+   SELECTED ITEM STYLING (Solid Yellow)
+   ========================================= */
+
+.timeline-item.selected,
+.timeline-item.selected.video,
+.timeline-item.selected.audio,
+.timeline-item.selected.image,
+.timeline-item.selected.text {
+  /* 1. The Yellow Border */
+  border: 2px solid #FCD34D !important;
+
+  /* 2. Outer Glow + Inner shadow for depth */
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(251, 191, 36, 0.4),
+    inset 0 0 10px rgba(251, 191, 36, 0.1) !important;
+
+  /* 3. Bring to very front */
+  z-index: 999 !important;
+
+  /* 4. Remove opacity dimming if present */
+  opacity: 1 !important;
+  filter: brightness(1.1) !important;
+}
+
+
+.track-lock-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-track.locked .track-lock-btn {
+  color: #ff4444;
+}
+
+
+/* Find this class */
+.dropdown-menu-animated {
+  position: absolute;
+  bottom: 100% !important;
+  top: auto !important;
+  right: 0;
+  left: auto;
+  margin-bottom: 12px;
+  width: 260px;
+  max-height: 400px;
+  background: #1a1a1a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+
+  /* --- 👇 CHANGE THESE LINES 👇 --- */
+  opacity: 0;
+  visibility: hidden;
+  /* This hides it from clicks completely */
+  transform: translateY(10px) scale(0.95);
+  pointer-events: none !important;
+  /* Force no clicks */
+  transition:
+    opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.2s;
+  /* Delays visibility change so fade out finishes */
+  /* --------------------------------- */
+
+  transform-origin: bottom right;
+  z-index: 99999 !important;
+}
+
+/* Find this class (approx line 1318) */
+.dropdown-menu-animated.open {
+  opacity: 1;
+  visibility: visible;
+  /* Makes it clickable again */
+  transform: translateY(0) scale(1);
+  pointer-events: auto !important;
+}
+
+
+/* css changes -- new css */
+
+
+
+/* ... existing code ... */
+
+/* ==========================================================================
+   FIX: TRANSITION BUTTON VISIBILITY
+   Ensures transition buttons always appear on top of tracks and items.
+   ========================================================================== */
+
+.timeline-track {
+  /* Allow elements like transition buttons to visually "break out" of the track container */
+  overflow: visible !important;
+  /* Establish a stacking context but keep it low enough so dragging works */
+  z-index: 1;
+  /* Ensure 3D transforms don't flatten the button behind the background */
+  transform-style: preserve-3d;
+}
+
+.video-transition-btn,
+.video-transition-btn.applied {
+  /* Force the button to the absolute maximum layer height */
+  z-index: 2147483647 !important;
+  /* Ensure it doesn't get caught in local stacking contexts */
+  transform: translate(-50%, -50%) translateZ(100px) !important;
+  /* Optional: Add a subtle shadow to separate it visually from content below */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Ensure the hover state also maintains this top-level position */
+.video-transition-btn:hover {
+  z-index: 2147483647 !important;
+  transform: translate(-50%, -50%) scale(1.15) translateZ(100px) !important;
+}
+
+
+/* ... existing code ... */
+
+/* ==========================================================================
+   HORIZONTAL SCROLL - CLEAN IMPLEMENTATION (UPDATED)
+   Scrollbar appears directly on .timeline container
+   No buttons needed - just clean scrollbar
+   ========================================================================== */
+
+
+/* Timeline markers */
+.timeline-markers-scrollable {
+  min-width: 100%;
+  width: 100%;
+}
+
+/* ==========================================================================
+   HORIZONTAL SCROLL - CLEAN IMPLEMENTATION
+   Scrollbar appears directly on .timeline container
+   ========================================================================== */
+
+/* Timeline container - has the scrollbar */
+.timeline {
+  /* NO fixed height - flexible */
+  flex: 1 1 auto !important;
+  max-height: calc(100vh - 400px) !important;
+
+  /* Enable BOTH scrollbars - ALWAYS VISIBLE */
+  overflow-x: scroll !important;
+  overflow-y: scroll !important;
+
+  /* Layout */
+  display: flex !important;
+  flex-direction: column !important;
+
+  /* Width */
+  width: 100% !important;
+
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+
+  /* Scrollbar always visible */
+  scrollbar-width: auto !important;
+  scrollbar-color: rgba(251, 191, 36, 0.6) rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Webkit scrollbar for timeline */
+.timeline::-webkit-scrollbar {
+  height: 16px !important;
+  width: 16px !important;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.timeline::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px;
+  margin: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,
+      rgba(251, 191, 36, 0.7),
+      rgba(251, 191, 36, 0.5)) !important;
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 0 10px rgba(251, 191, 36, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  min-width: 60px;
+}
+
+.timeline::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg,
+      rgba(251, 191, 36, 0.9),
+      rgba(251, 191, 36, 0.7)) !important;
+  box-shadow:
+    0 0 15px rgba(251, 191, 36, 0.6),
+    0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.timeline::-webkit-scrollbar-thumb:active {
+  background: rgba(251, 191, 36, 0.95) !important;
+  box-shadow:
+    0 0 20px rgba(251, 191, 36, 0.8),
+    inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Content wrapper - makes timeline scrollable */
+.timeline-content-wrapper {
+  /* Force width to be larger than viewport */
+  min-width: 300% !important;
+  width: fit-content;
+
+  /* Layout */
+  display: flex !important;
+  flex-direction: column !important;
+
+  /* Height - let it grow naturally, NO 100% */
+  min-height: 0;
+
+  /* Extra padding for scroll space */
+  padding-right: 100%;
+}
+
+/* Timeline tracks */
+.timeline-tracks {
+  /* Vertical scrolling for multiple tracks */
+  overflow-y: auto !important;
+  overflow-x: visible !important;
+
+  /* Fill space */
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+
+  /* Layout */
+  display: flex !important;
+  flex-direction: column !important;
+
+  /* Width */
+  width: 100%;
+  min-width: 100%;
+}
+
+/* Timeline markers */
+.timeline-markers-scrollable {
+  min-width: 100%;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* REMOVE OLD UNUSED STYLES */
+.timeline-scroll-wrapper-outer,
+.timeline-tracks-horizontal-scroll,
+.timeline-tracks-wide-content,
+.timeline-scroll-btn,
+.timeline-scroll-left,
+.timeline-scroll-right,
+.timeline-scroll-container,
+.timeline-scroll-content,
+.timeline-tracks-scroll-wrapper {
+  /* Deprecated - no longer used */
+}
+
+/* ==========================================================================
+   NEW: BOTTOM TIMELINE NAVIGATOR (SLIDER)
+   ========================================================================== */
+
+.timeline-navigator-wrapper {
+  padding: 8px 12px;
+  background: #111;
+  /* Dark background for contrast */
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex: 0 0 auto;
+  user-select: none;
+}
+
+.timeline-navigator {
+  position: relative;
+  height: 28px;
+  /* Slim but usable height */
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: border-color 0.2s;
+}
+
+.timeline-navigator:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Clip Indicators in Navigator */
+.navigator-clip {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  border-radius: 2px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.navigator-clip.video {
+  background: #9c27b0;
+}
+
+.navigator-clip.image {
+  background: #4caf50;
+}
+
+.navigator-clip.audio {
+  background: #ffc107;
+}
+
+.navigator-clip.text {
+  background: #2196f3;
+}
+
+/* The Draggable Window Handle */
+.navigator-window {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  background: rgba(251, 191, 36, 0.08);
+  /* Subtle neon tint */
+  border: 1px solid #FCD34D;
+  /* Neon Yellow Border */
+  border-radius: 4px;
+  cursor: grab;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.15);
+  z-index: 10;
+  backdrop-filter: none;
+  /* Remove blur */
+}
+
+.navigator-window:active {
+  cursor: grabbing;
+  background: rgba(251, 191, 36, 0.15);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.25);
+}
+
+/* Side Grips on the Slider */
+.navigator-grip {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 12px;
+  background: #FCD34D;
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+.navigator-grip.left {
+  left: 4px;
+}
+
+.navigator-grip.right {
+  right: 4px;
+}
+
+/* ==========================================================================
+     NEW: FILTER TABS (Left Panel)
+     ========================================================================== */
+
+.elements-filter-bar {
+  /* Hide scrollbar but allow scroll */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.elements-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hover effects for the items in UploadMedia/MediaSection */
+.media-upload-item:hover .hover-name-overlay {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+
+
+/* VideoEditor.css */
+
+.timeline {
+  /* 🛑 KEY FIX: Prevents browser "swipe-back" gesture and "bounce" at edges */
+  overscroll-behavior: none !important;
+  touch-action: pan-y;
+  /* Allow vertical scroll, BLOCK horizontal native gestures */
+
+  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
+  position: relative !important;
+  width: 100% !important;
+  flex: 1 1 auto !important;
+  user-select: none;
+}
+
+.timeline-markers {
+  /* Ensure header stays strictly at the top */
+  flex: 0 0 30px;
+  /* Fixed height for ruler */
+  background: #1a1a1a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  /* Markers outside view shouldn't trigger scroll */
+}
+
+.timeline-tracks {
+  overscroll-behavior: contain;
+  /* Contain scroll effects within tracks */
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  flex: 1;
+  position: relative;
+  width: 100%;
+}
+
+/* VideoEditor.css */
+
+.playhead-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  /* Thin, precise line */
+  background: #FCD34D;
+  /* Your neon yellow */
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+  /* Glowing effect */
+  z-index: 50;
+  pointer-events: none;
+  /* 🛑 Fix: Allows you to drag/scroll through the line without it stopping you */
+  will-change: left;
+  /* Optimization for smooth movement */
+}
+
+
+
+/* VideoEditor.css */
+
+/* 1. Main Timeline Container: Remove padding to let children touch edges */
+.timeline-container {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  height: auto;
+  min-height: 200px;
+  /* Ensure minimum height */
+  max-height: 50vh;
+  /* Adjust based on preference */
+
+  /* 🛑 Remove global padding so the bottom bar is flush */
+  padding: 0 !important;
+  margin: 0 !important;
+
+  background: #1a1a1a;
+  border-top: 1px solid #333;
+  z-index: 20;
+  position: relative;
+  overflow: hidden;
+  /* Clean edges */
+}
+
+/* 2. Controls Area: Add back the padding here */
+.timeline-controls {
+  flex: 0 0 50px;
+  /* Fixed height */
+  padding: 0 !important;
+  /* Remove padding, handle it in component */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: #1a1a1a;
+  z-index: 10;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.timeline-controls .left-controls-wrapper,
+.timeline-controls .right-controls {
+  display: flex;
+  align-items: center;
+}
+
+.timeline-controls .playback-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.timeline-controls .icon-button,
+.timeline-controls .play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: #ccc;
+  cursor: pointer;
+  border-radius: 6px;
+  /* Rounded corners for all buttons */
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.timeline-controls .icon-button:hover {
+  /* background: rgba(255, 255, 255, 0.1); */
+  /* color: #fff; */
+  transform: translateY(-1px);
+}
+
+.timeline-controls .icon-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.timeline-controls .icon-button:disabled:hover {
+  background: transparent;
+  transform: none;
+}
+
+.timeline-controls .icon-button .material-icons {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.timeline-controls .play-button {
+  width: 30px;
+  height: 30px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 50%;
+  /* Full circle */
+  color: #FCD34D;
+  margin: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  /* Ensure border is included in size */
+  overflow: hidden;
+  /* Prevent content from spilling out */
+}
+
+.timeline-controls .play-button:hover {
+  background: rgba(251, 191, 36, 0.2);
+  border-color: #FCD34D;
+  transform: translateY(-1px) scale(1.05);
+  /* Subtle lift and scale effect */
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+  /* Glow effect */
+}
+
+.timeline-controls .play-button .material-icons {
+  font-size: 18px !important;
+  /* Slightly smaller for perfect circle fit */
+  line-height: 1;
+}
+
+/* 3. The Main Timeline (Tracks + Ruler): Fill the middle space */
+.timeline {
+  flex: 1 1 auto !important;
+  /* Grow to fill space between controls and bottom nav */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden !important;
+  /* Handled by our virtual scroll */
+  position: relative !important;
+  width: 100% !important;
+  padding-bottom: 4px;
+  /* Tiny buffer before the navigator */
+}
+
+/* 4. Timeline Tracks: Ensure they scroll properly */
+.timeline-tracks {
+  flex: 1;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.06));
+}
+
+/* 5. NEW CLASS: The Bottom Navigator Wrapper */
+.timeline-bottom-navigator {
+  flex: 0 0 auto;
+  /* Fixed height based on content */
+  width: 100%;
+  background: #0f0f0f;
+  /* Darker background to distinguish */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  /* Compact padding */
+  z-index: 50;
+  padding-bottom: env(safe-area-inset-bottom, 6px);
+  /* iPhone Home Bar Safe Area */
+}
+
+
+/* VideoEditor.css */
+
+/* The track background */
+.mini-overview {
+  position: relative;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  /* Indicates you can click to jump */
+  user-select: none;
+  transition: height 0.2s ease;
+}
+
+/* Hover effect for better visibility */
+.mini-overview:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* The Draggable Handle (Yellow Box) */
+.mini-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border: 2px solid #FCD34D;
+  background: rgba(251, 191, 36, 0.15);
+  /* Slightly clearer fill */
+  border-radius: 4px;
+  cursor: grab;
+  /* Shows "Hand" icon */
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.mini-handle:active {
+  cursor: grabbing;
+  /* Shows "Grabbing" icon when dragging */
+  background: rgba(251, 191, 36, 0.25);
+}
+
+
+.timeline-controls {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: auto;
+}
+
+.zoom-group {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.zoom-btn {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* ==========================================================================
+   SUPERCOOL UI MODERNIZATION
+   ========================================================================== */
+
+/* --- 1. GLASSMORPHISM DROPDOWN --- */
+.glass-dropdown-btn {
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 8px 16px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  min-width: 140px !important;
+  max-width: 160px !important;
+  /* Prevent button from getting too wide */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  backdrop-filter: none !important;
+  /* Remove blur */
+  -webkit-backdrop-filter: none !important;
+  /* Remove webkit blur */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  overflow: hidden;
+  /* Ensure text doesn't overflow button */
+}
+
+.glass-dropdown-btn .current-value {
+  flex: 1;
+  min-width: 0;
+  /* Allow flexbox truncation */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.glass-dropdown-btn .arrow {
+  flex-shrink: 0;
+  /* Prevent arrow from being squished */
+  margin-left: auto;
+}
+
+.glass-dropdown-btn:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(251, 191, 36, 0.3) !important;
+  box-shadow: 0 4px 20px rgba(251, 191, 36, 0.15) !important;
+  transform: translateY(-1px);
+}
+
+.glass-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: rgba(20, 20, 20, 0.95);
+  /* Make more solid instead of blurry */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 160px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  backdrop-filter: none;
+  /* Remove blur */
+  -webkit-backdrop-filter: none;
+  /* Remove webkit blur */
+  z-index: 1000;
+  animation: dropdownSlideIn 0.2s cubic-bezier(0.2, 0.9, 0.2, 1);
+  transform-origin: top left;
+}
+
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.glass-dropdown-item {
+  background: transparent;
+  color: #ccc;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.glass-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.glass-dropdown-item.active {
+  background: rgba(251, 191, 36, 0.15);
+  color: #FCD34D;
+  font-weight: 600;
+}
+
+/* --- 2. SUPERCOOL HOVER EFFECT --- */
+/* Apply this class to any grid item container */
+.supercool-hover {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.3s ease !important;
+  position: relative;
+  z-index: 1;
+}
+
+.supercool-hover:hover {
+  transform: scale(1.05) translateY(-4px) !important;
+  z-index: 100 !important;
+  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(251, 191, 36, 0.4),
+    0 0 20px rgba(251, 191, 36, 0.2) !important;
+  /* Neon Glow */
+  border-color: #FCD34D !important;
+}
+
+/* Overlay gradient for text readability on hover */
+.supercool-hover .hover-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent) !important;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.supercool-hover:hover .hover-overlay {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Delete/Action buttons reveal */
+.supercool-hover .action-btn {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.supercool-hover:hover .action-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --- 3. PREMIUM 3D CARD HOVER --- */
+.premium-3d-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Bouncy enter */
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);
+  z-index: 1;
+}
+
+.premium-3d-card:hover {
+  transform: perspective(1000px) rotateX(5deg) translateY(-8px) scale(1.05);
+  box-shadow:
+    0 20px 40px -10px rgba(0, 0, 0, 0.6),
+    /* Deep shadow */
+    0 0 0 2px rgba(251, 191, 36, 0.6),
+    /* Neon Border */
+    0 0 30px rgba(251, 191, 36, 0.3);
+  /* Neon Glow */
+  z-index: 100;
+}
+
+/* Inner content pop (Parallax feel) */
+.premium-3d-card .inner-content {
+  transition: transform 0.4s ease-out;
+  transform: translateZ(0px);
+}
+
+.premium-3d-card:hover .inner-content {
+  transform: translateZ(30px);
+  /* Content pops out closer to screen */
+}
+
+/* Reflection / Shine effect */
+.premium-3d-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(125deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.05) 40%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.05) 60%,
+      rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+.premium-3d-card:hover::after {
+  transform: translateX(100%);
+  transition: transform 0.6s ease-in-out;
+}
+
+.playback-controls {
+  /* 1. Layout: Aligns items in a row and centers them vertically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Change to 'space-between' if you want them spread out */
+
+  /* 2. Spacing: Adds breathing room inside the box */
+  padding: 12px 24px;
+  /* Top/Bottom: 12px, Left/Right: 24px */
+  gap: 16px;
+  /* Adds space between the buttons automatically */
+
+  /* 3. Sizing & Safety: Allows tooltips to display */
+  width: 100%;
+  height: auto;
+  /* Or a fixed height like 60px */
+  box-sizing: border-box;
+  /* CRITICAL: Ensures padding doesn't make the div wider than 100% */
+  overflow: visible;
+  /* Allow tooltips to appear outside the container */
+}
+
+/* 4. Button Specifics: Ensures the button itself behaves */
+.playback-controls button {
+  display: inline-flex;
+  /* Keeps content inside button centered */
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  /* Prevents the button from being squished if space is tight */
+  margin: 0;
+  /* Resets default browser margins */
+
+  cursor: pointer;
+}
+
+
+/* --- CUSTOM TOOLTIP STYLES --- */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-tooltip {
+  position: absolute;
+  bottom: 100%;
+  /* Positions it above the element */
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: #1a1a1a;
+  /* Dark background */
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100000;
+  /* Ensure it sits on top of everything */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  animation: tooltip-fade-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* The little arrow pointing down */
+.custom-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #1a1a1a transparent transparent transparent;
+  /* Match background color */
+}
+
+/* Optional: Neon accent border for the arrow if you want */
+.custom-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2) transparent transparent transparent;
+  z-index: -1;
+}
+
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-8px);
+  }
+}
+
+@keyframes tooltip-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+
+.timeline-markers {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.timeline-track {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  width: 100% !important;
+}
+
+
+.timeline-markers .marker:first-child {
+  left: 0 !important;
+  transform: translateX(0) !important;
+  /* Starts text exactly at 0px */
+  text-align: left !important;
+}
+
+.playhead-line {
+  margin-left: 5px !important;
+  /* pointer-events: none !important;  <-- Ensure this stays to fix "pointer isn't moving" issue */
+}
+
+/* ========================================
+   NATIVE HTML TOOLTIP STYLING
+   ======================================== */
+
+/* Tooltip styling for any button or input with title attribute */
+button[title],
+input[title] {
+  position: relative;
+}
+
+/* Tooltip text box (::after pseudo-element) */
+button[title]::after,
+input[title]::after {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: rgba(26, 26, 26, 0.98);
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 99999;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+}
+
+/* Arrow pointing downward (::before pseudo-element) */
+button[title]::before,
+input[title]::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(26, 26, 26, 0.98);
+
+  pointer-events: none;
+  z-index: 99999;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+}
+
+/* Show tooltip and arrow on hover */
+button[title]:hover::after,
+button[title]:hover::before,
+input[title]:hover::after,
+input[title]:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==========================================================================
+   ROUND COLOR PICKER STYLES
+   ========================================================================== */
+.circle-picker {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Removes default padding around the color swatch in Chrome/Edge */
+.circle-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+/* Rounds the actual color swatch inside */
+.circle-picker::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+/* Firefox compatibility */
+.circle-picker::-moz-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
