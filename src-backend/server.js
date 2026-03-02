@@ -17,23 +17,28 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Restrict CORS to the known frontend origin.
-// In production: set FRONTEND_URL env var to your Vercel deployment URL.
-// In development: localhost:3000 and localhost:5173 are always allowed.
+// Accepted origins: always localhost, any *.vercel.app preview URL,
+// plus whatever FRONTEND_URL is set to on Render (supports comma-separated list).
+const extraOrigins = (process.env.FRONTEND_URL || '')
+    .split(',')
+    .map(o => o.trim())
+    .filter(Boolean);
+
 const allowedOrigins = [
     'http://localhost:3000',
     'http://localhost:5173',
-    process.env.FRONTEND_URL,
-].filter(Boolean);
+    ...extraOrigins,
+];
 
 app.use(cors({
     origin: (origin, callback) => {
-        // Allow server-to-server calls (no origin) and whitelisted origins
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error(`CORS: origin ${origin} not allowed`));
-        }
+        // Allow server-to-server calls (no origin header)
+        if (!origin) return callback(null, true);
+        // Allow any Vercel deployment/preview URL
+        if (origin.endsWith('.vercel.app')) return callback(null, true);
+        // Allow explicitly listed origins
+        if (allowedOrigins.includes(origin)) return callback(null, true);
+        callback(new Error(`CORS: origin ${origin} not allowed`));
     },
     credentials: true,
 }));
