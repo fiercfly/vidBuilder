@@ -11,8 +11,4 @@ services:
         value: production
       - key: FRONTEND_URL
         sync: false  # Set this manually in the Render dashboard to your Vercel URL
-      - key: RENDER_EXTERNAL_URL
-        fromService:
-          type: web
-          name: vidbuilder-backend
-          property: host
+      # RENDER_EXTERNAL_URL is automatically injected by Render at runtime

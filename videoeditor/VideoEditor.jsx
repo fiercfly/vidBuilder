@@ -2680,7 +2680,10 @@ const VideoEditor = () => {
     <div className="video-editor-container0">
       <div className="top-strip" style={{ width: '100%', zIndex: 100 }}>
         <Suspense fallback={<div className="h-16 bg-neutral-950 w-full" />}>
-          <TopHeader />
+          <TopHeader
+            onExport={() => setExportModalOpen(true)}
+            isExporting={isExporting}
+          />
         </Suspense>
       </div>
       <div className="video-editor-container">
