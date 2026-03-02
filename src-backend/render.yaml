@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: vidbuilder-backend
+    env: node
+    region: oregon
+    plan: standard  # Remotion rendering requires at least Standard (needs enough CPU/RAM)
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_URL
+        sync: false  # Set this manually in the Render dashboard to your Vercel URL
+      - key: RENDER_EXTERNAL_URL
+        fromService:
+          type: web
+          name: vidbuilder-backend
+          property: host
